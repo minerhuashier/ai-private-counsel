@@ -136,19 +136,21 @@ AI 随后把每个问题映射到可能的规范层级：
 
 另外，本项目下载并归档了与交易页面和平台处理过程有关的平台公开规则，例如：
 
-- 《飞猪消费者保障标准》；
+- 《F猪消费者保障标准》；
 - 《度假商品服务保障标准》；
 - 《度假类目订单取消处理规定变更通知》；
-- 《飞猪服务中心-退改新规》；
-- 《飞猪交易争议处理规范》；
-- 《飞猪商品交易超时规定》；
-- 《飞猪度假商品交易超时说明》；
-- 《飞猪旅行集市度假特定争议处理标准》；
-- 《淘宝平台争议处理规则》；
-- 《飞猪服务协议》；
-- 《淘宝平台服务协议》。
+- 《F猪服务中心-退改新规》；
+- 《F猪交易争议处理规范》；
+- 《F猪商品交易超时规定》；
+- 《F猪度假商品交易超时说明》；
+- 《F猪旅行集市度假特定争议处理标准》；
+- 《T宝平台争议处理规则》；
+- 《F猪服务协议》；
+- 《T宝平台服务协议》。
 
 平台规则不是法律。它们主要用于理解交易流程、页面承诺、平台主体和争议处理机制，并在必要时作为事实背景或合同内容线索。法律效力、适用顺序和冲突处理仍以现行法律、行政法规和司法解释为准。
+
+为降低不必要的名称争议，本公开仓库统一使用“F猪”和“T宝”作为相关平台的代称。正式程序材料如需与平台规则原文逐字对应，由本人仅在非公开工作区使用官方完整名称。法律、行政法规和司法解释的名称仍按正式全称公开。
 
 ### 6. 下载完成后先做版本审查
 
@@ -613,7 +615,7 @@ The names of laws and regulations are public and are not redacted in this reposi
 | SPC Interpretation on the Application of the Civil Procedure Law | 2022 amendment | official DOCX | convert the DOCX; generate a reading PDF | jurisdiction, evidence, service, and procedural detail |
 | SPC Provisions on the Jurisdiction of Internet Courts | Judicial Interpretation No. 14 of 2025 | official published text | structure the official text as Markdown | jurisdiction of internet courts |
 
-The project also archived public platform rules, including consumer-protection standards, travel-product service standards, cancellation notices, dispute-handling rules, transaction-time rules, and the relevant platform service agreements.
+The project also archived public platform rules, including consumer-protection standards, travel-product service standards, cancellation notices, dispute-handling rules, transaction-time rules, and the relevant platform service agreements. This public repository uses the project aliases `F猪` and `T宝` for the relevant platform names. Formal procedural materials retain official names in the private workspace where exact identification is required. The full official names of statutes, administrative regulations, and judicial interpretations remain public.
 
 Platform rules are not statutes. They are used to understand transaction flow, page promises, platform entities, and dispute-handling mechanisms. Statutory authority and conflicts remain governed by effective laws, administrative regulations, and judicial interpretations.
 

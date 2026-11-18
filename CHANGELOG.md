@@ -6,6 +6,7 @@
 
 ### Added
 
+- Enforced public aliases `F猪` and `T宝` for the platforms involved in the underlying matter while keeping statute and regulation names in full;
 - A bilingual legal-source pipeline covering official-source discovery, download, preservation, PDF/DOCX/HTML digitization, version verification, and use in legal analysis;
 - A reusable legal-source archival and digitization skill with explicit fail-closed conditions;
 - Source-register and legal-use matrix templates;

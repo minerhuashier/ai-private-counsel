@@ -178,6 +178,11 @@ SENSITIVE_PATTERNS: tuple[tuple[str, re.Pattern[str], str], ...] = (
         re.compile(r"-----BEGIN [A-Z0-9 ]*PRIVATE KEY-----"),
         "Private keys must never enter the public repository.",
     ),
+    (
+        "blocked public platform name",
+        re.compile("\u98de\u732a|\u6dd8\u5b9d"),
+        "Use the repository aliases F猪 and T宝 instead.",
+    ),
 )
 
 

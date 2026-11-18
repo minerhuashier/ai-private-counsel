@@ -232,6 +232,8 @@ PASS: public-safety checks passed
 
 本仓库不接收真实姓名、手机号、地址、身份证件、银行卡、订单号、案号、聊天原文、录音、截图或法院文书。不要在 Issue、Pull Request、Discussion 或测试夹具中粘贴真实案件材料。
 
+案件涉及平台的完整名称同样不得进入公开内容，统一使用“F猪”和“T宝”作为项目代称。法律、行政法规和司法解释的正式名称不受此限制，仍按全称公开。公开安全检查器会阻断真实平台名称。
+
 数据边界见 [PRIVACY.md](PRIVACY.md)，安全问题报告方式见 [SECURITY.md](SECURITY.md)，风险分析见 [docs/threat-model.md](docs/threat-model.md)。
 
 ## 参与方式
@@ -451,6 +453,8 @@ PASS: public-safety checks passed
 ## Privacy and Security
 
 This repository does not accept real names, phone numbers, addresses, identity documents, bank cards, order numbers, case numbers, original chats, recordings, screenshots, or court documents. Never paste real case material into an Issue, Pull Request, Discussion, or test fixture.
+
+The full names of the platforms involved in the underlying matter are also excluded from public content. The repository uses the project aliases `F猪` and `T宝`. Official names of statutes, administrative regulations, and judicial interpretations remain in full. The public-safety checker blocks the platform names.
 
 See [PRIVACY.md](PRIVACY.md) for data boundaries, [SECURITY.md](SECURITY.md) for security reports, and [docs/threat-model.md](docs/threat-model.md) for the risk model.
 

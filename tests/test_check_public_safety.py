@@ -71,6 +71,13 @@ class PublicSafetyCheckerTests(unittest.TestCase):
             self._kinds(),
         )
 
+    def test_public_platform_names_are_rejected(self) -> None:
+        for value in ("\u98de\u732a", "\u6dd8\u5b9d"):
+            with self.subTest(value=value):
+                self._write("notes/platform.md", f"{value}\n")
+
+                self.assertIn("blocked public platform name", self._kinds())
+
     def test_missing_required_file_is_rejected(self) -> None:
         (self.root / "PRIVACY.md").unlink()
 

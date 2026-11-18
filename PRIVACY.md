@@ -7,6 +7,7 @@
 - 真实姓名、身份证件、手机号、住址、邮箱和银行卡；
 - 订单号、支付流水号、账号、Cookie、访问令牌和密钥；
 - 法院案号与可识别当事人的法院文书；
+- 案件涉及平台的完整名称；公开内容统一使用“F猪”和“T宝”代称，法律、行政法规和司法解释的正式名称除外；
 - 聊天记录、录音、视频、人脸、头像和签名；
 - 未公开的合同、投诉材料、证据目录和代理意见；
 - 任何能够通过组合信息识别个人的材料。
@@ -46,6 +47,7 @@ Never submit the following to this repository, including Issues, Pull Requests, 
 - real names, identity documents, phone numbers, addresses, email addresses, or bank cards;
 - order numbers, payment references, account IDs, cookies, access tokens, or secrets;
 - court case numbers and court documents that identify a party;
+- the full names of the platforms involved in the underlying matter; public content uses the aliases `F猪` and `T宝`, while official statute, administrative-regulation, and judicial-interpretation names remain in full;
 - chats, recordings, videos, faces, avatars, or signatures;
 - unpublished contracts, complaints, evidence indexes, or advocacy materials;
 - any material that can identify an individual through combined information.
