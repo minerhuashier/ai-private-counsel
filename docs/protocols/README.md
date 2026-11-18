@@ -41,7 +41,7 @@
 | P-05 | 公开安全与事件响应协议 | `FORMAL` | 项目自有 | [SECURITY.md](../../SECURITY.md)、[threat-model.md](../threat-model.md) |
 | P-06 | 人工批准与外部动作边界 | `EMBEDDED` | 项目根 `AGENTS.md` 与 P-01 | 本文第“协议边界”节 |
 | P-07 | 媒体发布合规协议 | `EMBEDDED` | 私有工作区发布技能 | 本文第“协议边界”节 |
-| P-08 | Agent 角色加载协议 | `EMBEDDED` | 项目根 `AGENTS.md`、项目配置和角色库 | [agent-configuration.md](agent-configuration.md) |
+| P-08 | Agent 角色加载协议 | `EMBEDDED` | 项目根 `AGENTS.md`、项目配置和角色库 | [agent-configuration.md](agent-configuration.md)、[agent-architecture.md](../agent-architecture.md) |
 | P-09 | 项目状态、决策与审计协议 | `EMBEDDED` | 私有工作区项目管理目录 | [agent-configuration.md](agent-configuration.md) |
 | P-10 | 重要任务通知协议 | `ADOPTED` | 用户全局 Agent 配置 | 本文第“外部规则”节 |
 | P-11 | 防止幻觉协议 | `CONSOLIDATED` | 由 P-01 至 P-05 及项目红线整理 | [anti-hallucination-protocol.md](anti-hallucination-protocol.md) |
@@ -244,7 +244,7 @@ Specifically:
 | P-05 | Public Safety and Incident Response Protocol | `FORMAL` | Project-authored | [SECURITY.md](../../SECURITY.md), [threat-model.md](../threat-model.md) |
 | P-06 | Human Approval and External Action Boundary | `EMBEDDED` | Private project `AGENTS.md` and P-01 | The "Protocol Boundaries" section below |
 | P-07 | Media Publication Compliance Protocol | `EMBEDDED` | Private-workspace publishing skill | The "Protocol Boundaries" section below |
-| P-08 | Agent Role Loading Protocol | `EMBEDDED` | Private project `AGENTS.md`, configuration, and role registry | [agent-configuration.md](agent-configuration.md) |
+| P-08 | Agent Role Loading Protocol | `EMBEDDED` | Private project `AGENTS.md`, configuration, and role registry | [agent-configuration.md](agent-configuration.md), [agent-architecture.md](../agent-architecture.md) |
 | P-09 | Project State, Decision, and Audit Protocol | `EMBEDDED` | Private-workspace project-management directory | [agent-configuration.md](agent-configuration.md) |
 | P-10 | Important Task Notification Protocol | `ADOPTED` | User's global agent configuration | The "External Rules" section below |
 | P-11 | Anti-Hallucination Protocol | `CONSOLIDATED` | Consolidated from P-01 through P-05 and project red lines | [anti-hallucination-protocol.md](anti-hallucination-protocol.md) |

@@ -1,0 +1,98 @@
+# 脱敏示例：所有值均为占位符。
+# De-identified example: every value is a placeholder.
+
+schema_version: "1.0"
+
+project:
+  name: "<PROJECT_NAME>"
+  owner_role: "self-represented-user"
+  agent_mode: "agent-led-human-approved"
+  dispute_domain: "<CIVIL_DISPUTE_DOMAIN>"
+  current_stage: "stage-1-evidence-and-sources"
+  status_file: "06-项目管理/STATUS.md"
+  decisions_file: "06-项目管理/decisions.md"
+  worklog_directory: "06-项目管理/worklog"
+  last_updated: "YYYY-MM-DD"
+
+authority:
+  final_decision_maker: "user"
+  external_action_executor: "user"
+  ai_role: "prepare-review-drafts-only"
+  approval_required_for:
+    - sign
+    - pay
+    - file
+    - upload
+    - withdraw
+    - send_complaint
+    - publish
+
+roles:
+  civil-contract-lawyer: "00-项目配置/roles/civil-contract-lawyer.md"
+  consumer-ecommerce-lawyer: "00-项目配置/roles/consumer-ecommerce-lawyer.md"
+  tourism-contract-lawyer: "00-项目配置/roles/tourism-contract-lawyer.md"
+  litigation-procedure-lawyer: "00-项目配置/roles/litigation-procedure-lawyer.md"
+  evidence-specialist: "00-项目配置/roles/evidence-specialist.md"
+  platform-liability-lawyer: "00-项目配置/roles/platform-liability-lawyer.md"
+  publicity-compliance-lawyer: "00-项目配置/roles/publicity-compliance-lawyer.md"
+
+skills:
+  media-posting: "00-项目配置/skills/media-posting/SKILL.md"
+  video-editing: "00-项目配置/skills/video-editing/SKILL.md"
+
+source_policy:
+  official_sources_only_for_legal_conclusions: true
+  record_title: true
+  record_article: true
+  record_version: true
+  record_effective_date: true
+  record_source_url: true
+  record_retrieved_at: true
+  record_source_hash: true
+  fail_closed_on_conflict: true
+
+evidence_policy:
+  originals_read_only: true
+  hash_algorithm: "sha256"
+  record_source: true
+  record_acquired_at: true
+  record_evidentiary_purpose: true
+  separate_public_redacted_copy: true
+  never_overwrite_original: true
+
+privacy_policy:
+  redact_by_default: true
+  forbidden_in_public_repository:
+    - real_name
+    - phone_number
+    - home_address
+    - identity_document
+    - bank_or_payment_account
+    - case_number
+    - court_document
+    - original_chat
+    - recording
+    - screenshot_with_identifiers
+  second_pass_redaction_before_publish: true
+
+status_policy:
+  distinguish_displayed_status_from_formal_notice: true
+  record_status_source_and_checked_at: true
+  old_status_does_not_automatically_continue: true
+  deadline_requires_authoritative_source: true
+  conflict_action: "stop-and-verify"
+
+output_policy:
+  default_status: "draft_for_human_review"
+  require_fact_references: true
+  require_source_references: true
+  expose_unverified_items: true
+  final_status_requires_approval_id: true
+
+roles_to_verify_before_use:
+  - "参考 examples/agent-config/roles.example.yaml"
+  - "Review examples/agent-config/roles.example.yaml before use"
+
+skills_to_verify_before_use:
+  - "确认技能只提供执行方法，不拥有法律判断权"
+  - "Confirm that a skill provides execution methods only, not legal judgment"

@@ -28,6 +28,7 @@ REQUIRED_PATHS = (
     "schemas/fact.schema.json",
     "schemas/source.schema.json",
     "schemas/approval.schema.json",
+    "docs/agent-architecture.md",
     "docs/founder-story.md",
     "docs/project-journey.md",
     "docs/protocols/README.md",
@@ -35,11 +36,20 @@ REQUIRED_PATHS = (
     "docs/protocols/truth-five-protocol.md",
     "docs/protocols/aep-adoption.md",
     "docs/protocols/agent-configuration.md",
+    "examples/agent-config/README.md",
+    "examples/agent-config/AGENTS.template.md",
+    "examples/agent-config/project.example.yaml",
+    "examples/agent-config/roles.example.yaml",
+    "examples/agent-config/role-contract.template.md",
+    "examples/agent-config/STATUS.template.md",
+    "examples/agent-config/decisions.template.md",
+    "examples/agent-config/worklog.template.md",
     "examples/synthetic/case.json",
     "examples/synthetic/LICENSE-CC0.md",
     "tools/check_public_safety.py",
     "tests/test_check_public_safety.py",
     "tests/test_founder_story.py",
+    "tests/test_agent_architecture.py",
 )
 
 SKIPPED_DIR_NAMES = {

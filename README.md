@@ -104,6 +104,22 @@ flowchart LR
 完整角色、停止条件和输出契约见 [PROTOCOL.md](PROTOCOL.md)。  
 13 个协议条目的来源、状态和边界见 [docs/protocols/README.md](docs/protocols/README.md)。
 
+## Agent 不是七个机器人，而是一套可审计的分工
+
+本项目公开的是“**一个主 Agent + 七个按任务加载的领域角色 + 两个执行技能 + 状态与批准层**”，不是七个永久运行、彼此独立的 AI 律师。
+
+这样配置的原因很具体：
+
+- 合同、消费者与网络交易、旅游服务、平台责任需要不同的法律问题清单，不能混成一段通用分析；
+- 证据必须独立于法律论证，防止流畅叙事跑在证明前面；
+- 诉讼程序必须独立于实体法，防止“有道理”变成“立案或期限上不可行”；
+- 公开传播合规是独立闸门，内容真实也不等于适合公开；
+- 技能只提供发帖和视频处理的方法，不拥有法律判断权；
+- `STATUS.md`、`decisions.md` 和 `worklog/` 保存跨会话状态，聊天记忆不能替代原件和正式来源；
+- 最终签署、缴费、提交、处分程序权利和发布仍由用户本人完成或逐项明确授权。
+
+完整分析见 [《Agent 构成与设计理由》](docs/agent-architecture.md)。可直接复用的脱敏配置、七个角色契约和状态模板见 [examples/agent-config/](examples/agent-config/README.md)。
+
 ## 一分钟看懂项目历程
 
 如果你更想先读故事，可以从第一人称、去标识化的 [《AI 帮我打官司，最强私人律师上线》](docs/founder-story.md) 开始。它记录了一个普通人从“我该去哪个法院”到建立可核验 AI 自诉工作流的十二个月。
@@ -131,6 +147,7 @@ flowchart LR
 ├── PRIVACY.md
 ├── SECURITY.md
 ├── docs/
+│   ├── agent-architecture.md
 │   ├── founder-story.md
 │   ├── project-journey.md
 │   ├── workflow.md
@@ -148,16 +165,20 @@ flowchart LR
 │   ├── fact.schema.json
 │   ├── source.schema.json
 │   └── approval.schema.json
-├── examples/synthetic/
+├── examples/
+│   ├── agent-config/
+│   └── synthetic/
 ├── tools/
 └── tests/
 ```
 
+- `docs/agent-architecture.md`：单主 Agent、七角色、双技能、状态层与人工批准门的双语设计说明；
 - `docs/founder-story.md`：第一人称、去标识化的双语历程自述；
 - `docs/project-journey.md`：匿名、双语的项目历程与方法复盘；
 - `docs/protocols/`：13 个协议条目的总表、防止幻觉、“真实五问”、AEP 采用说明和项目初始化方法；
 - `docs/`：工作流、证据、来源核验和风险模型；
 - `schemas/`：证据、事实、法律来源与人工批准的数据约定；
+- `examples/agent-config/`：脱敏的根指令、项目配置、七角色契约、状态、决策与工作日志模板；
 - `examples/synthetic/`：完全虚构的演示数据；
 - `tools/check_public_safety.py`：公开仓库敏感文件与模式检查；
 - `tests/`：不依赖网络的基础测试。
@@ -182,7 +203,7 @@ PASS: public-safety checks passed
 - 仓库阶段：`v0.1` 方法与工具骨架；
 - 真实案件：仍在法院程序中，不进入本仓库；
 - 公开数据：只允许完全虚构的示例；
-- 已提供：协议总表、防止幻觉协议、“真实五问”提案、AEP 采用说明、项目初始化方法、四类 Schema、安全检查器和基础测试；
+- 已提供：Agent 架构说明、脱敏配置模板、协议总表、防止幻觉协议、“真实五问”提案、AEP 采用说明、项目初始化方法、四类 Schema、安全检查器和基础测试；
 - 尚未提供：自动立案、自动提交、自动缴费、自动投诉和自动发布；
 - 后续重点：证据台账验证、来源登记、引用核验、版本比较和人工批准记录。
 
@@ -319,6 +340,22 @@ The answer was not a longer prompt. It was four hard constraints:
 
 See [PROTOCOL.md](PROTOCOL.md) for roles, stop conditions, and output contracts.
 
+## Not Seven Robots: One Auditable Division of Work
+
+The public configuration is **one master Agent + seven task-selected domain roles + two execution skills + a state and approval layer**, not seven permanent independent AI lawyers.
+
+The design reasons are concrete:
+
+- Contract, consumer and e-commerce, travel services, and platform liability require different legal question sets and should not collapse into one generic analysis;
+- evidence remains separate from legal argument so a fluent narrative cannot outrun proof;
+- procedure remains separate from substantive law so a plausible theory does not become an invalid filing path;
+- publicity compliance is an independent gate because truthful content is not automatically safe to publish;
+- skills provide posting and video methods but hold no legal judgment authority;
+- `STATUS.md`, `decisions.md`, and `worklog/` preserve cross-session state; chat memory cannot replace originals or formal sources;
+- signing, payment, filing, procedural dispositions, and publication remain human actions or require explicit item-by-item authorization.
+
+Read [Agent Composition and Design Rationale](docs/agent-architecture.md) for the full analysis. Reusable de-identified configuration, seven role contracts, and state templates are in [examples/agent-config/](examples/agent-config/README.md).
+
 ## The Project Journey in One Minute
 
 For a first-person, de-identified account, start with [AI Helps Me Fight My Case: The Ultimate Private Counsel Is Online](docs/founder-story.md). It follows one ordinary person's twelve-month path from "which court should I go to?" to a verifiable AI-assisted self-litigation workflow.
@@ -338,11 +375,13 @@ The fuller anonymized account is in [docs/project-journey.md](docs/project-journ
 
 ## Repository Layout
 
+- [`docs/agent-architecture.md`](docs/agent-architecture.md): the bilingual design rationale for one master Agent, seven roles, two skills, the state layer, and the human-approval gate;
 - [`docs/founder-story.md`](docs/founder-story.md): a first-person, de-identified bilingual account of the journey;
 - [`docs/project-journey.md`](docs/project-journey.md): the anonymized bilingual project history and method review;
 - [`docs/protocols/`](docs/protocols/README.md): the 13-entry registry, anti-hallucination protocol, proposed Truth Five protocol, AEP adoption note, and initialization guide;
 - [`docs/`](docs/): workflow, evidence, source verification, and threat model;
 - [`schemas/`](schemas/): data contracts for evidence, facts, legal sources, and human approval;
+- [`examples/agent-config/`](examples/agent-config/README.md): de-identified root instructions, project configuration, seven role contracts, and state/decision/worklog templates;
 - [`examples/synthetic/`](examples/synthetic/): entirely fictional demonstration data;
 - [`tools/check_public_safety.py`](tools/check_public_safety.py): checks for sensitive files and patterns;
 - [`tests/`](tests/): basic tests with no network dependency.
@@ -368,7 +407,7 @@ PASS: public-safety checks passed
 - Real case: still in court proceedings and not included here;
 - Public data: entirely synthetic examples only;
 - Not available: automated filing, submission, payment, complaints, or publishing;
-- Available now: a protocol registry, an anti-hallucination protocol, a proposed Truth Five protocol, an AEP adoption note, an initialization guide, four schemas, a public-safety checker, and basic tests;
+- Available now: an Agent architecture guide, de-identified configuration templates, a protocol registry, an anti-hallucination protocol, a proposed Truth Five protocol, an AEP adoption note, an initialization guide, four schemas, a public-safety checker, and basic tests;
 - Next focus: evidence-index validation, source registry, citation verification, version comparison, and approval records.
 
 ## Privacy and Security

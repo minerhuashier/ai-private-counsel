@@ -6,6 +6,8 @@
 
 ### Added
 
+- A bilingual Agent architecture guide explaining the one-master-Agent, seven-role, two-skill, state-and-approval design;
+- De-identified reusable configuration examples for the root instructions, project registry, seven role contracts, status, decisions, and worklogs;
 - A first-person, de-identified bilingual founder story covering the path from procedural confusion to a verifiable AI-assisted self-litigation workflow;
 - Protocol registry covering project-authored, embedded, adopted, consolidated, and proposed rules;
 - Explicit anti-hallucination protocol;
