@@ -29,6 +29,7 @@ REQUIRED_PATHS = (
     "schemas/source.schema.json",
     "schemas/approval.schema.json",
     "docs/agent-architecture.md",
+    "docs/legal-source-pipeline.md",
     "docs/founder-story.md",
     "docs/project-journey.md",
     "docs/protocols/README.md",
@@ -44,12 +45,16 @@ REQUIRED_PATHS = (
     "examples/agent-config/STATUS.template.md",
     "examples/agent-config/decisions.template.md",
     "examples/agent-config/worklog.template.md",
+    "examples/legal-sources/source-register.template.md",
+    "examples/legal-sources/rule-use-matrix.template.md",
+    "skills/legal-source-archive/SKILL.md",
     "examples/synthetic/case.json",
     "examples/synthetic/LICENSE-CC0.md",
     "tools/check_public_safety.py",
     "tests/test_check_public_safety.py",
     "tests/test_founder_story.py",
     "tests/test_agent_architecture.py",
+    "tests/test_legal_source_pipeline.py",
 )
 
 SKIPPED_DIR_NAMES = {

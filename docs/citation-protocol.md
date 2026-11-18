@@ -1,5 +1,7 @@
 # 法律来源核验协议
 
+本协议规定“什么可以被当作来源”。完整下载、原件存档、PDF 数字化、版本比较和事实适用流程见 [从官方文本到可引用法律](legal-source-pipeline.md) 和 [法律法规来源存档与数字化 Skill](../skills/legal-source-archive/SKILL.md)。
+
 ## 可用来源
 
 优先顺序：
@@ -50,6 +52,8 @@
 ---
 
 # Legal Source Verification Protocol
+
+This protocol defines what may count as a source. See [From Official Text to Citable Law](legal-source-pipeline.md) and the [Legal Source Archival and Digitization Skill](../skills/legal-source-archive/SKILL.md) for the full retrieval, preservation, digitization, version-comparison, and fact-application workflow.
 
 ## Permitted Sources
 

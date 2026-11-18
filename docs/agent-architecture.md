@@ -78,6 +78,12 @@ flowchart TD
 
 技能只在任务需要时加载。涉及公开发布时，必须同时加载“公开传播合规”角色；视频任务还要加载视频技能。发布技能不能给法律结论授权，法律角色也不能替用户点击发布。
 
+### 本次公开提炼的研究技能
+
+在原有“两个执行技能”之外，本次又从项目实际使用的方法中公开提炼了一个 [法律法规来源存档与数字化 Skill](../skills/legal-source-archive/SKILL.md)。它负责下载官方原件、登记来源、数字化、核对版本和生成适用矩阵，不为案件策略作决定。
+
+公开它是为了让“AI 如何找到并核验法条”可复现，不表示项目早期已经存在同名文件，也不改变“一个主 Agent、七个角色、两个原有执行技能”的历史架构口径。
+
 ## 为什么这样配置
 
 ### 1. 一个主 Agent，避免责任被“多 Agent”稀释
@@ -327,6 +333,12 @@ The seven roles are not an organizational chart. They are derived from **four su
 | `video-editing` | Video processing | Preserve source media, edit, subtitle, mask, version, and export | It can process images, but cannot assess reputation, privacy, or procedural risk after publication |
 
 Skills load only when the task requires them. Any public-post task must also load the publicity-compliance role; video work must load the video skill. A posting skill cannot authorize a legal conclusion, and a legal role cannot click publish for the user.
+
+### Research Skill Extracted for the Public Repository
+
+In addition to the two original execution skills, this publication extracts a [Legal Source Archival and Digitization Skill](../skills/legal-source-archive/SKILL.md) from the project's actual method. It retrieves official originals, records provenance, digitizes text, checks versions, and builds legal-use matrices. It does not decide case strategy.
+
+This public addition makes the legal-source verification process reproducible. It is not a claim that an identically named file existed earlier, and it does not change the historical description of one master Agent, seven roles, and two original execution skills.
 
 ## Why the Configuration Is Structured This Way
 

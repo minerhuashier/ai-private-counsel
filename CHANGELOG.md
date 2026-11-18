@@ -6,6 +6,10 @@
 
 ### Added
 
+- A bilingual legal-source pipeline covering official-source discovery, download, preservation, PDF/DOCX/HTML digitization, version verification, and use in legal analysis;
+- A reusable legal-source archival and digitization skill with explicit fail-closed conditions;
+- Source-register and legal-use matrix templates;
+- Public documentation of the laws, administrative regulation, judicial interpretations, and platform-rule categories actually archived by the project;
 - A bilingual Agent architecture guide explaining the one-master-Agent, seven-role, two-skill, state-and-approval design;
 - De-identified reusable configuration examples for the root instructions, project registry, seven role contracts, status, decisions, and worklogs;
 - A first-person, de-identified bilingual founder story covering the path from procedural confusion to a verifiable AI-assisted self-litigation workflow;
