@@ -1,0 +1,95 @@
+{
+  "case_id": "SYNTHETIC-001",
+  "title": "虚构的在线服务订单争议",
+  "jurisdiction": "CN",
+  "disclaimer": "This case is entirely fictional and is not legal advice.",
+  "evidence": [
+    {
+      "schema_version": "0.1.0",
+      "evidence_id": "EVD-ORDER-001",
+      "source_type": "document",
+      "original_filename": "synthetic-order.txt",
+      "media_type": "text/plain",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "acquired_at": "2026-01-01T10:00:00+08:00",
+      "source": "Synthetic test fixture",
+      "custodian": "synthetic_fixture",
+      "purpose": "Test how an order record is linked to a factual statement.",
+      "sensitivity": "synthetic",
+      "public_derivative_allowed": true,
+      "public_derivative_id": "PUB-EVD-ORDER-001"
+    },
+    {
+      "schema_version": "0.1.0",
+      "evidence_id": "EVD-MESSAGE-001",
+      "source_type": "message",
+      "original_filename": "synthetic-message.txt",
+      "media_type": "text/plain",
+      "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "acquired_at": "2026-01-02T09:00:00+08:00",
+      "source": "Synthetic test fixture",
+      "custodian": "synthetic_fixture",
+      "purpose": "Test how a message supports a disputed timeline event.",
+      "sensitivity": "synthetic",
+      "public_derivative_allowed": true
+    }
+  ],
+  "facts": [
+    {
+      "schema_version": "0.1.0",
+      "fact_id": "FACT-ORDER-001",
+      "statement": "The synthetic consumer placed a synthetic order on 2026-01-01.",
+      "classification": "fact",
+      "evidence_ids": [
+        "EVD-ORDER-001"
+      ],
+      "public_wording": "A test order was placed on the stated date.",
+      "user_confirmed": true
+    },
+    {
+      "schema_version": "0.1.0",
+      "fact_id": "FACT-MESSAGE-001",
+      "statement": "The synthetic message states that no service was provided.",
+      "classification": "fact",
+      "evidence_ids": [
+        "EVD-MESSAGE-001"
+      ],
+      "user_confirmed": true
+    },
+    {
+      "schema_version": "0.1.0",
+      "fact_id": "FACT-CLAIM-001",
+      "statement": "The synthetic seller should return the full amount under the fictional facts.",
+      "classification": "claim",
+      "evidence_ids": [
+        "EVD-ORDER-001",
+        "EVD-MESSAGE-001"
+      ],
+      "user_confirmed": false
+    },
+    {
+      "schema_version": "0.1.0",
+      "fact_id": "FACT-UNVERIFIED-001",
+      "statement": "A platform employee approved the refund.",
+      "classification": "unverified",
+      "evidence_ids": [],
+      "user_confirmed": false,
+      "unverified_reason": "No synthetic platform record exists for this assertion."
+    }
+  ],
+  "sources": [],
+  "approvals": [
+    {
+      "schema_version": "0.1.0",
+      "approval_id": "APR-DEMO-001",
+      "action": "court_submission",
+      "target_version": "synthetic-draft-v0",
+      "scope": "This approval is only a schema example and authorizes nothing.",
+      "status": "pending",
+      "human_approved": false,
+      "approved_at": null,
+      "expires_at": null
+    }
+  ]
+}
+

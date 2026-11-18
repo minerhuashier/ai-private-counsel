@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Evidence Record",
+  "description": "A private evidence registry record. Public repositories must not contain real evidence.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "evidence_id",
+    "source_type",
+    "original_filename",
+    "media_type",
+    "sha256",
+    "acquired_at",
+    "source",
+    "custodian",
+    "purpose",
+    "sensitivity",
+    "public_derivative_allowed"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "evidence_id": {
+      "type": "string",
+      "pattern": "^EVD-[A-Z0-9-]{3,64}$"
+    },
+    "source_type": {
+      "type": "string",
+      "enum": [
+        "document",
+        "image",
+        "audio",
+        "video",
+        "web_snapshot",
+        "message",
+        "transaction",
+        "official_notice",
+        "other"
+      ]
+    },
+    "original_filename": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Filename only. Do not store a private absolute path in a public record."
+    },
+    "media_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "acquired_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source": {
+      "type": "string",
+      "minLength": 1,
+      "description": "How the material was obtained, without exposing private system paths."
+    },
+    "custodian": {
+      "type": "string",
+      "enum": [
+        "user_private_workspace",
+        "user_encrypted_storage",
+        "synthetic_fixture"
+      ]
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sensitivity": {
+      "type": "string",
+      "enum": [
+        "synthetic",
+        "private",
+        "highly_sensitive"
+      ]
+    },
+    "public_derivative_allowed": {
+      "type": "boolean"
+    },
+    "public_derivative_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "sensitivity": {
+            "const": "synthetic"
+          }
+        },
+        "required": [
+          "sensitivity"
+        ]
+      },
+      "then": {
+        "properties": {
+          "custodian": {
+            "const": "synthetic_fixture"
+          }
+        }
+      }
+    }
+  ]
+}
+

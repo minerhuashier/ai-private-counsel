@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Fact Matrix Record",
+  "description": "A fact, feeling, or legal claim with explicit evidence references.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "fact_id",
+    "statement",
+    "classification",
+    "evidence_ids",
+    "user_confirmed"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "fact_id": {
+      "type": "string",
+      "pattern": "^FACT-[A-Z0-9-]{3,64}$"
+    },
+    "statement": {
+      "type": "string",
+      "minLength": 1
+    },
+    "classification": {
+      "type": "string",
+      "enum": [
+        "fact",
+        "feeling",
+        "claim",
+        "unverified"
+      ]
+    },
+    "evidence_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^EVD-[A-Z0-9-]{3,64}$"
+      },
+      "uniqueItems": true
+    },
+    "public_wording": {
+      "type": "string",
+      "description": "Optional de-identified wording for public material."
+    },
+    "user_confirmed": {
+      "type": "boolean"
+    },
+    "unverified_reason": {
+      "type": "string"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "classification": {
+            "const": "fact"
+          }
+        },
+        "required": [
+          "classification"
+        ]
+      },
+      "then": {
+        "properties": {
+          "evidence_ids": {
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "classification": {
+            "const": "unverified"
+          }
+        },
+        "required": [
+          "classification"
+        ]
+      },
+      "then": {
+        "required": [
+          "unverified_reason"
+        ],
+        "properties": {
+          "user_confirmed": {
+            "const": false
+          }
+        }
+      }
+    }
+  ]
+}
+

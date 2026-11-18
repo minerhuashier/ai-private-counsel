@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Legal Source Record",
+  "description": "A traceable legal, judicial, or official platform source.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "source_id",
+    "source_type",
+    "title",
+    "issuer",
+    "jurisdiction",
+    "official_url",
+    "retrieved_at",
+    "sha256",
+    "verification_status"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "source_id": {
+      "type": "string",
+      "pattern": "^SRC-[A-Z0-9-]{3,64}$"
+    },
+    "source_type": {
+      "type": "string",
+      "enum": [
+        "statute",
+        "administrative_regulation",
+        "judicial_interpretation",
+        "judicial_case",
+        "government_notice",
+        "platform_rule",
+        "court_rule",
+        "other_official"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "issuer": {
+      "type": "string",
+      "minLength": 1
+    },
+    "jurisdiction": {
+      "type": "string",
+      "minLength": 2
+    },
+    "document_number": {
+      "type": "string"
+    },
+    "published_date": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "effective_date": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "official_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "retrieved_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "verification_status": {
+      "type": "string",
+      "enum": [
+        "unverified",
+        "verified",
+        "superseded",
+        "repealed"
+      ]
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}
+

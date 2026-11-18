@@ -1,0 +1,55 @@
+# Local environment and secrets
+.env
+.env.*
+*.key
+*.pem
+id_rsa*
+secrets/
+
+# Local case data and generated material
+private/
+case-data/
+evidence/
+outputs/
+*.sqlite
+*.sqlite3
+*.db
+
+# Documents, images, audio, and video
+*.pdf
+*.doc
+*.docx
+*.xls
+*.xlsx
+*.ppt
+*.pptx
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.heic
+*.mp3
+*.m4a
+*.wav
+*.mp4
+*.mov
+*.avi
+*.zip
+*.7z
+*.rar
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Editors and operating systems
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.tmp
+*.bak
+
