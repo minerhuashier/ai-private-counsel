@@ -129,10 +129,11 @@ flowchart LR
 - 本项目实际下载的《中华人民共和国民法典》《中华人民共和国消费者权益保护法》《中华人民共和国电子商务法》《中华人民共和国旅游法》《中华人民共和国民事诉讼法》《网络交易监督管理办法》及相关司法解释；
 - PDF 带文本层、官方 DOCX、扫描件加官方 HTML、OCR 和动态平台规则等不同数字化路径；
 - 为什么扫描版法律优先补取官方 HTML，而不是把低质量 OCR 当作正式条文；
+- 如何用 `codex-chrome-ops` 预检系统 Chrome、记录最终 URL、选择下载分支并验证文件完整性；
 - 如何把“问题—规范—构成要件—事实—证据—缺口”连接起来，避免法条堆砌；
 - 如何核验版本、施行时间、条号、原文和事实适用。
 
-阅读 [《从官方文本到可引用法律》](docs/legal-source-pipeline.md)，可直接使用 [法律法规来源存档与数字化 Skill](skills/legal-source-archive/SKILL.md)、[来源登记模板](examples/legal-sources/source-register.template.md) 和 [法律适用矩阵模板](examples/legal-sources/rule-use-matrix.template.md)。
+阅读 [《从官方文本到可引用法律》](docs/legal-source-pipeline.md) 和 [《用系统 Chrome 检索、下载与固定法律法规》](docs/codex-chrome-source-capture.md)，可直接使用 [法律法规来源存档与数字化 Skill](skills/legal-source-archive/SKILL.md)、[来源登记模板](examples/legal-sources/source-register.template.md)、[下载运行记录模板](examples/legal-sources/download-run.template.md) 和 [法律适用矩阵模板](examples/legal-sources/rule-use-matrix.template.md)。
 
 ## 一分钟看懂项目历程
 
@@ -168,6 +169,7 @@ flowchart LR
 │   ├── evidence-protocol.md
 │   ├── citation-protocol.md
 │   ├── legal-source-pipeline.md
+│   ├── codex-chrome-source-capture.md
 │   ├── threat-model.md
 │   └── protocols/
 │       ├── README.md
@@ -195,10 +197,11 @@ flowchart LR
 - `docs/project-journey.md`：匿名、双语的项目历程与方法复盘；
 - `docs/protocols/`：13 个协议条目的总表、防止幻觉、“真实五问”、AEP 采用说明和项目初始化方法；
 - `docs/legal-source-pipeline.md`：法律法规获取、原件存档、PDF/DOCX/HTML 数字化、版本核验和实际适用方法；
+- `docs/codex-chrome-source-capture.md`：`codex-chrome-ops` 预检、查询、下载、最终 URL、失败关闭和文件验证的技术细节；
 - `docs/`：工作流、证据、来源核验和风险模型；
 - `schemas/`：证据、事实、法律来源与人工批准的数据约定；
 - `examples/agent-config/`：脱敏的根指令、项目配置、七角色契约、状态、决策与工作日志模板；
-- `examples/legal-sources/`：法律法规来源登记和法律适用矩阵模板；
+- `examples/legal-sources/`：法律法规来源登记、下载运行记录和法律适用矩阵模板；
 - `skills/legal-source-archive/`：从项目实践提炼的法律法规下载、数字化与引用核验 Skill；
 - `examples/synthetic/`：完全虚构的演示数据；
 - `tools/check_public_safety.py`：公开仓库敏感文件与模式检查；
@@ -387,11 +390,12 @@ The public method note explains:
 
 - the full names of the laws, administrative regulation, and judicial interpretations actually archived;
 - PDF text-layer extraction, official DOCX conversion, scanned PDF plus official HTML, OCR fallback, and dynamic platform-rule capture;
+- how `codex-chrome-ops` preflights system Chrome, records the final URL, selects a download branch, and verifies file integrity;
 - why scanned statutes use an official HTML full text instead of unchecked OCR;
 - how issue, authority, elements, facts, evidence, gaps, and conclusions are connected in one matrix;
 - how version, effective date, article number, original language, and factual application are verified.
 
-Read [From Official Text to Citable Law](docs/legal-source-pipeline.md). Reusable files are available in the [Legal Source Archival and Digitization Skill](skills/legal-source-archive/SKILL.md), [source register template](examples/legal-sources/source-register.template.md), and [legal-use matrix template](examples/legal-sources/rule-use-matrix.template.md).
+Read [From Official Text to Citable Law](docs/legal-source-pipeline.md) and [Retrieving and Preserving Legal Sources with System Chrome](docs/codex-chrome-source-capture.md). Reusable files are available in the [Legal Source Archival and Digitization Skill](skills/legal-source-archive/SKILL.md), [source register template](examples/legal-sources/source-register.template.md), [download run template](examples/legal-sources/download-run.template.md), and [legal-use matrix template](examples/legal-sources/rule-use-matrix.template.md).
 
 ## The Project Journey in One Minute
 
@@ -416,11 +420,12 @@ The fuller anonymized account is in [docs/project-journey.md](docs/project-journ
 - [`docs/founder-story.md`](docs/founder-story.md): a first-person, de-identified bilingual account of the journey;
 - [`docs/project-journey.md`](docs/project-journey.md): the anonymized bilingual project history and method review;
 - [`docs/legal-source-pipeline.md`](docs/legal-source-pipeline.md): official-source acquisition, preservation, PDF/DOCX/HTML digitization, version verification, and legal application;
+- [`docs/codex-chrome-source-capture.md`](docs/codex-chrome-source-capture.md): system-Chrome preflight, query contracts, download branches, final-URL checks, and file verification;
 - [`docs/protocols/`](docs/protocols/README.md): the 13-entry registry, anti-hallucination protocol, proposed Truth Five protocol, AEP adoption note, and initialization guide;
 - [`docs/`](docs/): workflow, evidence, source verification, and threat model;
 - [`schemas/`](schemas/): data contracts for evidence, facts, legal sources, and human approval;
 - [`examples/agent-config/`](examples/agent-config/README.md): de-identified root instructions, project configuration, seven role contracts, and state/decision/worklog templates;
-- [`examples/legal-sources/`](examples/legal-sources/): source-register and legal-use matrix templates;
+- [`examples/legal-sources/`](examples/legal-sources/): source-register, download-run, and legal-use matrix templates;
 - [`skills/legal-source-archive/`](skills/legal-source-archive/SKILL.md): a reusable source-acquisition, digitization, and citation-verification skill;
 - [`examples/synthetic/`](examples/synthetic/): entirely fictional demonstration data;
 - [`tools/check_public_safety.py`](tools/check_public_safety.py): checks for sensitive files and patterns;

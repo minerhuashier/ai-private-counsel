@@ -97,7 +97,33 @@ AI 随后把每个问题映射到可能的规范层级：
 
 搜索摘要、自媒体文章、模型记忆和无法打开来源的转载，都不能作为正式法律依据。
 
-### 4. 下载时同时固定“文件”和“身份信息”
+### 4. 浏览器检索与下载的技术记录
+
+本项目不是只把“下载”写成一个结果。每次需要系统 Chrome 完成的检索或下载，都按 [`codex-chrome-ops` 实操记录](codex-chrome-source-capture.md)执行：
+
+```bash
+node "$HOME/.codex/skills/codex-chrome-ops/scripts/preflight.mjs" --json
+```
+
+只有预检返回 `ready: true` 才连接系统 Chrome。连接后动态加载当前插件客户端，优先取得 `agent.browsers.get("chrome")`；如果失败，只允许短暂等待后尝试一次 `get("extension")`，仍失败就记录 `chrome_channel_unavailable` 并停止，不能静默改用内置浏览器或其他自动化通道。
+
+检索完成后至少记录：
+
+- 浏览器通道和预检结果；
+- 起始 URL、最终 URL、页面标题和取得时间；
+- 检索词、筛选条件、检查页数和覆盖限制；
+- 官方标题、发布机关、文号和版本标识；
+- 公开下载文件或官方 HTML 的证据；
+- 文件类型、页数或字节数、原件 SHA-256；
+- 派生文本 SHA-256、转换分支和已知限制。
+
+下载分支包括原生公开下载、官方 HTML 全文、动态页面公开响应、本地 HTML 转阅读用 PDF，以及用户人工接管。页面出现登录、验证码、访问控制、证书警告或只显示摘要时，必须失败关闭。浏览器截图不默认进入公开仓库，以免带入账号、书签、历史记录或其他个人信息。
+
+本项目早期资料下载阶段实际混合使用了联网搜索、内置浏览器、HTTP 抓取和公开详情响应；`codex-chrome-ops` 是后来对这些经验形成的系统 Chrome 操作契约。公开记录必须如实写明当时使用的通道，不能把早期操作追溯改写成系统 Chrome。
+
+下载运行记录见 [法律法规下载运行记录模板](../examples/legal-sources/download-run.template.md)。
+
+### 5. 下载时同时固定“文件”和“身份信息”
 
 每份来源至少记录：
 
@@ -118,7 +144,7 @@ AI 随后把每个问题映射到可能的规范层级：
 
 来源记录模板见 [法律法规来源登记模板](../examples/legal-sources/source-register.template.md)。
 
-### 5. 本项目实际下载和存档的法律规范
+### 6. 本项目实际下载和存档的法律规范
 
 以下是本项目实际用于研究、程序判断或文书核对的公开法律规范名称。法律、法规名称本身是公开信息，不需要脱敏。
 
@@ -152,7 +178,7 @@ AI 随后把每个问题映射到可能的规范层级：
 
 为降低不必要的名称争议，本公开仓库统一使用“F猪”和“T宝”作为相关平台的代称。正式程序材料如需与平台规则原文逐字对应，由本人仅在非公开工作区使用官方完整名称。法律、行政法规和司法解释的名称仍按正式全称公开。
 
-### 6. 下载完成后先做版本审查
+### 7. 下载完成后先做版本审查
 
 法规名称相同，不代表内容相同。每份规范至少检查：
 
@@ -577,6 +603,24 @@ The project uses this order:
 6. secondary material only for issue discovery, never as final authority.
 
 Search snippets, social-media posts, model memory, and inaccessible reposts are not final authority.
+
+### Browser retrieval and download record
+
+The project does not reduce retrieval to a final filename. When system Chrome is required, the task follows the [`codex-chrome-ops` practice note](codex-chrome-source-capture.md):
+
+```bash
+node "$HOME/.codex/skills/codex-chrome-ops/scripts/preflight.mjs" --json
+```
+
+Continue only on `ready: true`. Load the current browser client dynamically, request `agent.browsers.get("chrome")`, and if that fails, wait briefly and try `get("extension")` once. If neither resolves, record `chrome_channel_unavailable` and stop. Do not silently switch to the in-app browser or another automation channel.
+
+Each run records the channel and preflight result, start and final URLs, page title, retrieval time, query, filters, pages checked, coverage limits, official title, issuer, document number, version marker, public download or HTML evidence, file type, page or byte count, original SHA-256, derived-text hash, conversion branch, and limitations.
+
+Download branches include a native public download, official HTML full text, public response of a dynamic page, local HTML-to-PDF rendering, and user takeover. Login, CAPTCHA, access controls, certificate warnings, and summary-only pages fail closed. Browser screenshots do not enter the public repository by default because they can expose accounts, bookmarks, history, and other personal data.
+
+The early retrieval stage actually mixed web search, the in-app browser, HTTP retrieval, and public detail responses. `codex-chrome-ops` is the later system-Chrome contract distilled from those lessons. Public records must state the channel actually used and must not retrospectively describe early in-app-browser or HTTP work as a Chrome download.
+
+Use [the legal-source download run template](../examples/legal-sources/download-run.template.md).
 
 ### Record the file and its identity
 

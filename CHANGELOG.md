@@ -8,8 +8,9 @@
 
 - Enforced public aliases `F猪` and `T宝` for the platforms involved in the underlying matter while keeping statute and regulation names in full;
 - A bilingual legal-source pipeline covering official-source discovery, download, preservation, PDF/DOCX/HTML digitization, version verification, and use in legal analysis;
+- A bilingual system-Chrome source-capture guide documenting the evolution from the historical mixed-channel download work to the self-developed `codex-chrome-ops` operating contract, including its preflight and reference playbooks, query scope, download branches, final-URL checks, file hashes, recovery, and channel-honesty rules;
 - A reusable legal-source archival and digitization skill with explicit fail-closed conditions;
-- Source-register and legal-use matrix templates;
+- Source-register, download-run, and legal-use matrix templates;
 - Public documentation of the laws, administrative regulation, judicial interpretations, and platform-rule categories actually archived by the project;
 - A bilingual Agent architecture guide explaining the one-master-Agent, seven-role, two-skill, state-and-approval design;
 - De-identified reusable configuration examples for the root instructions, project registry, seven role contracts, status, decisions, and worklogs;

@@ -7,6 +7,7 @@ from pathlib import Path
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 PIPELINE = REPOSITORY_ROOT / "docs" / "legal-source-pipeline.md"
+CAPTURE = REPOSITORY_ROOT / "docs" / "codex-chrome-source-capture.md"
 SKILL = REPOSITORY_ROOT / "skills" / "legal-source-archive" / "SKILL.md"
 SOURCE_TEMPLATE = (
     REPOSITORY_ROOT
@@ -19,6 +20,12 @@ MATRIX_TEMPLATE = (
     / "examples"
     / "legal-sources"
     / "rule-use-matrix.template.md"
+)
+DOWNLOAD_RUN_TEMPLATE = (
+    REPOSITORY_ROOT
+    / "examples"
+    / "legal-sources"
+    / "download-run.template.md"
 )
 
 
@@ -89,21 +96,103 @@ class LegalSourcePipelineTests(unittest.TestCase):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, text)
 
+    def test_chrome_capture_note_is_bilingual_and_auditable(self) -> None:
+        text = CAPTURE.read_text(encoding="utf-8")
+
+        for phrase in (
+            "# 用系统 Chrome 检索、下载与固定法律法规",
+            "# Retrieving and Preserving Legal Sources with System Chrome",
+            "codex-chrome-ops",
+            "preflight.mjs",
+            "ready: true",
+            'agent.browsers.get("chrome")',
+            'get("extension")',
+            "只尝试一次",
+            "try `get(\"extension\")` once",
+            "最终 URL",
+            "final URL",
+            "SHA-256",
+            "验证码",
+            "CAPTCHA",
+            "登录",
+            "login",
+            "覆盖限制",
+            "coverage limits",
+            "内置浏览器",
+            "in-app browser",
+            "不能把早期操作追溯改写成系统 Chrome",
+            "does not mean that every early step was performed in system Chrome",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, text)
+
+    def test_chrome_capture_note_fails_closed_without_bypass(self) -> None:
+        text = CAPTURE.read_text(encoding="utf-8")
+
+        for phrase in (
+            "chrome_channel_unavailable",
+            "blocked_login",
+            "blocked_captcha",
+            "incomplete_text",
+            "source_conflict",
+            "不得切换浏览器通道",
+            "不得绕过",
+            "公开方法不把这种做法推荐为常规路径",
+            "do not switch channels without explicit user approval",
+            "Never copy browser credentials",
+            "is not a recommended public workflow",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, text)
+
+    def test_chrome_capture_note_documents_skill_evolution_and_components(
+        self,
+    ) -> None:
+        text = CAPTURE.read_text(encoding="utf-8")
+
+        for phrase in (
+            "从 `02-资料下载` 到自研 `codex-chrome-ops`",
+            "From `02-Legal-Source-Download` to the self-developed `codex-chrome-ops`",
+            "`window.__INITIAL_STATE__`",
+            "官方 `control-chrome` 传输层",
+            "official `control-chrome` transport",
+            "操作契约层",
+            "operating-contract layer",
+            "`scripts/preflight.mjs`",
+            "`references/query-playbook.md`",
+            "`references/form-playbook.md`",
+            "`references/recovery.md`",
+            "不是自研 Chrome 扩展",
+            "nor a custom Chrome extension",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, text)
+
     def test_templates_are_bilingual_and_placeholder_only(self) -> None:
         source_text = SOURCE_TEMPLATE.read_text(encoding="utf-8")
         matrix_text = MATRIX_TEMPLATE.read_text(encoding="utf-8")
+        run_text = DOWNLOAD_RUN_TEMPLATE.read_text(encoding="utf-8")
 
         self.assertIn("# 法律法规来源登记模板", source_text)
         self.assertIn("# Legal Source Register Template", source_text)
         self.assertIn("<OFFICIAL_URL>", source_text)
+        self.assertIn("<FINAL_URL>", source_text)
+        self.assertIn("system_chrome / in_app_browser / web_search / http", source_text)
         self.assertIn("<SHA256>", matrix_text)
 
         self.assertIn("# 法律适用矩阵模板", matrix_text)
         self.assertIn("# Legal-Use Matrix Template", matrix_text)
         self.assertIn("<EVIDENCE_IDS>", matrix_text)
 
+        self.assertIn("# 法律法规下载运行记录模板", run_text)
+        self.assertIn("# Legal-Source Download Run Record Template", run_text)
+        self.assertIn("RUN-<TYPE>-<NNN>", run_text)
+        self.assertIn("ART-<NNN>", run_text)
+        self.assertIn("64_LOWERCASE_HEX", run_text)
+        self.assertIn("chrome_channel_unavailable", run_text)
+
     def test_relative_links_in_pipeline_and_skill_resolve(self) -> None:
-        for document in (PIPELINE, SKILL):
+        for document in (PIPELINE, CAPTURE, SKILL):
             text = document.read_text(encoding="utf-8")
             links = re.findall(r"\[[^\]]+\]\(([^)#]+)(?:#[^)]+)?\)", text)
             relative_links = [

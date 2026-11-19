@@ -64,7 +64,23 @@
 
 找不到官方来源时标记 `UNVERIFIED`。
 
-### 3. 下载原件
+### 3. 选择浏览器通道并下载原件
+
+如果用户明确要求使用本机系统 Chrome，或页面依赖动态渲染、原生公开下载控件、公开详情响应，加载并遵守 `codex-chrome-ops` 契约：
+
+```bash
+node "$HOME/.codex/skills/codex-chrome-ops/scripts/preflight.mjs" --json
+```
+
+- 只有 `ready: true` 才继续；
+- 动态加载当前 Chrome 插件客户端，不硬编码缓存版本；
+- 优先取得 `agent.browsers.get("chrome")`；
+- 失败时短暂等待，只尝试一次 `agent.browsers.get("extension")`；
+- 仍失败时标记 `chrome_channel_unavailable`，未经用户明确同意不得切换浏览器；
+- 首次操作前读取实时 browser documentation；
+- 记录起始 URL、最终 URL、页面标题、检索范围、分页和覆盖限制。
+
+内置浏览器、联网搜索、系统 Chrome 和 HTTP 抓取是不同通道。运行记录必须写真实通道，不能把早期内置浏览器或 HTTP 操作改写成系统 Chrome 下载。
 
 优先顺序：
 
@@ -81,6 +97,19 @@
 - 计算 SHA-256；
 - 记录页数或字符数；
 - 检查是否真的是全文，而不是登录页、错误页、摘要页或验证码页。
+
+浏览器下载、公开 HTML、动态页面公开响应和用户人工接管等分支，见 [系统 Chrome 法律法规抓取说明](../../docs/codex-chrome-source-capture.md)。遇到登录、验证码、访问控制、证书警告、重定向到非官方页面或只有摘要时，停止自动操作。
+
+下载后必须验证：
+
+- `file` 输出的真实格式；
+- 文件非零且未明显截断；
+- PDF 页数和文本层，或 DOCX/HTML 的首尾与正文结构；
+- 原件 SHA-256；
+- 派生文本 SHA-256；
+- 最终 URL、页面标题、正式标题、发布机关和版本是否互相一致。
+
+动态页面的公开响应只有在页面自身公开发起、且无需读取 Cookie、Authorization、Storage 或账号数据时才能保存。不得为了取得正文而复制会话凭据、构造越权请求或绕过访问控制。
 
 ### 4. 判断数字化分支
 
@@ -189,6 +218,7 @@ source_id
 - 不把 OCR 结果直接当作正式引文；
 - 不把平台规则自动提升为法律；
 - 不替用户决定诉讼策略或执行外部动作。
+- 不把内置浏览器、网页搜索或 HTTP 抓取记录改写成系统 Chrome 操作。
 
 完整方法见 [从官方文本到可引用法律](../../docs/legal-source-pipeline.md)。
 
@@ -238,20 +268,33 @@ Build a traceable, searchable, citable source chain for public statutes, adminis
 
 1. Turn the dispute into specific legal questions with a fact cutoff date.
 2. Build a candidate source table with title, issuer, document number, version, official URL, reason for possible application, and verification status.
-3. Prefer official PDF, DOCX, or HTML from the issuing authority, a statutory database, an official gazette, or an official platform page.
-4. Preserve the original, retrieval time, URL, page count, and SHA-256. Verify that the file is the complete text rather than a login page, error page, snippet, or CAPTCHA page.
-5. Test the PDF text layer with `pdfinfo` and `pdftotext`.
-6. Choose the correct branch:
+3. Select the browser channel and download the original.
+
+   When the user explicitly requires system Chrome, or the page depends on dynamic rendering, a native public download control, or a public detail response, follow the `codex-chrome-ops` contract:
+
+   ```bash
+   node "$HOME/.codex/skills/codex-chrome-ops/scripts/preflight.mjs" --json
+   ```
+
+   Continue only on `ready: true`. Load the current browser-client version dynamically, prefer `agent.browsers.get("chrome")`, wait briefly and try `agent.browsers.get("extension")` once if needed, and record `chrome_channel_unavailable` if neither resolves. Do not switch channels without explicit user approval. Read the live browser documentation before the first operation and record the start URL, final URL, title, query scope, pagination, and coverage limits.
+
+   The in-app browser, web search, system Chrome, and HTTP retrieval are distinct channels. A run record must name the channel that actually performed the work.
+
+4. Prefer official PDF, DOCX, or HTML from the issuing authority, a statutory database, an official gazette, or an official platform page.
+5. Preserve the original, retrieval time, URL, page count, and SHA-256. Verify that the file is the complete text rather than a login page, error page, snippet, or CAPTCHA page.
+6. Stop automated interaction at login, CAPTCHA, access controls, certificate warnings, non-official redirects, or summary-only pages. See [the system-Chrome source-capture note](../../docs/codex-chrome-source-capture.md) for native download, official HTML, public-response, derived-rendering, and user-takeover branches.
+7. Test the PDF text layer with `pdfinfo` and `pdftotext`.
+8. Choose the correct branch:
    - usable PDF text layer;
    - official DOCX;
    - scanned PDF plus official HTML;
    - OCR as a last resort;
    - raw HTML or JSON for dynamic platform rules.
-7. Normalize into Markdown while retaining title, issuer, document number, publication date, effective date, version, official URL, retrieval time, original hash, body, supplementary provisions, and limitations.
-8. Check first and last articles, article continuity, key articles, figures, deadlines, paragraph/item numbers, missing pages, duplication, garbling, columns, and encoding.
-9. Hash the original and the derived text separately.
-10. Build an issue-element-authority-fact-evidence matrix.
-11. Mark unsupported propositions `unverified` and stop when source versions conflict.
+9. Normalize into Markdown while retaining title, issuer, document number, publication date, effective date, version, official URL, retrieval time, original hash, body, supplementary provisions, and limitations.
+10. Check first and last articles, article continuity, key articles, figures, deadlines, paragraph/item numbers, missing pages, duplication, garbling, columns, and encoding.
+11. Hash the original and the derived text separately and verify that final URL, page title, formal title, issuer, and version agree.
+12. Build an issue-element-authority-fact-evidence matrix.
+13. Mark unsupported propositions `unverified` and stop when source versions conflict.
 
 ## Fail-Closed Conditions
 
@@ -285,5 +328,6 @@ Tools do not replace comparison with the official original.
 - never use unchecked OCR as a formal citation;
 - never elevate a platform rule to a statute;
 - never decide strategy or perform external actions for the user.
+- never relabel in-app-browser, web-search, or HTTP retrieval as a system-Chrome operation.
 
 See [From Official Text to Citable Law](../../docs/legal-source-pipeline.md).

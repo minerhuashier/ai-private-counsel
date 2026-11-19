@@ -15,8 +15,14 @@
 | 公布日期 | `YYYY-MM-DD` |
 | 施行日期 | `YYYY-MM-DD` |
 | 事实发生时版本 | `<VERSION_AT_RELEVANT_DATE>` |
+| 下载运行 ID | `RUN-<TYPE>-<NNN>` |
+| 下载或抓取通道 | `system_chrome / in_app_browser / web_search / http / user_supplied_file` |
+| 起始 URL | `<START_URL>` |
+| 最终 URL | `<FINAL_URL>` |
+| 页面标题 | `<PAGE_TITLE>` |
 | 官方 URL | `<OFFICIAL_URL>` |
 | 取得时间 | `YYYY-MM-DDTHH:MM:SS+08:00` |
+| 分页或覆盖限制 | `<COVERAGE_LIMITS_OR_NONE>` |
 | 原始格式 | `PDF / DOCX / HTML / JSON` |
 | 原始页数或字符数 | `<COUNT>` |
 | 原件 SHA-256 | `<64_LOWERCASE_HEX>` |
@@ -69,8 +75,14 @@
 | Publication date | `YYYY-MM-DD` |
 | Effective date | `YYYY-MM-DD` |
 | Version at relevant date | `<VERSION_AT_RELEVANT_DATE>` |
+| Download run ID | `RUN-<TYPE>-<NNN>` |
+| Download or retrieval channel | `system_chrome / in_app_browser / web_search / http / user_supplied_file` |
+| Start URL | `<START_URL>` |
+| Final URL | `<FINAL_URL>` |
+| Page title | `<PAGE_TITLE>` |
 | Official URL | `<OFFICIAL_URL>` |
 | Retrieval time | `YYYY-MM-DDTHH:MM:SS+08:00` |
+| Pagination or coverage limits | `<COVERAGE_LIMITS_OR_NONE>` |
 | Original format | `PDF / DOCX / HTML / JSON` |
 | Page or character count | `<COUNT>` |
 | Original SHA-256 | `<64_LOWERCASE_HEX>` |
