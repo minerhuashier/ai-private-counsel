@@ -149,6 +149,8 @@ flowchart LR
 
 阅读 [《从一段叙述到可核验证据链》](docs/evidence-collection-playbook.md)，可直接使用 [取证计划模板](examples/evidence/collection-plan.template.md)、[取证运行记录模板](examples/evidence/collection-run.template.md) 和 [法律要件与证据矩阵模板](examples/evidence/legal-evidence-matrix.template.md)。模板只接受占位符或完全虚构内容，真实截图、录音、聊天和案件材料留在私有工作区。
 
+如果只想先看技术总览，阅读 [《证据收集的技术、方法与指导原则》](docs/evidence-collection-techniques.md)。它把项目实际使用的访问抓取、完整性保管、数字化结构化、核验与法律映射技术列成矩阵，并逐项写明产出、停止条件和证明边界。
+
 ## 一分钟看懂项目历程
 
 如果你更想先读故事，可以从第一人称、去标识化的 [《AI 帮我打官司，最强私人律师上线》](docs/founder-story.md) 开始。它记录了一个普通人从“我该去哪个法院”到建立可核验 AI 自诉工作流的十二个月。
@@ -185,6 +187,7 @@ flowchart LR
 │   ├── legal-source-pipeline.md
 │   ├── codex-chrome-source-capture.md
 │   ├── evidence-collection-playbook.md
+│   ├── evidence-collection-techniques.md
 │   ├── threat-model.md
 │   └── protocols/
 │       ├── README.md
@@ -215,6 +218,7 @@ flowchart LR
 - `docs/legal-source-pipeline.md`：法律法规获取、原件存档、PDF/DOCX/HTML 数字化、版本核验和实际适用方法；
 - `docs/codex-chrome-source-capture.md`：`codex-chrome-ops` 预检、查询、下载、最终 URL、失败关闭和文件验证的技术细节；
 - `docs/evidence-collection-playbook.md`：从叙述生成证据清单、用户配合、页面固定、Markdown/OCR/转写和法律要件反查的五关口复盘；
+- `docs/evidence-collection-techniques.md`：证据收集中使用的技术栈、十二步方法链、证据状态、停止条件和指导原则；
 - `docs/`：工作流、证据、来源核验和风险模型；
 - `schemas/`：证据、事实、法律来源与人工批准的数据约定；
 - `examples/agent-config/`：脱敏的根指令、项目配置、七角色契约、状态、决策与工作日志模板；
@@ -245,7 +249,7 @@ PASS: public-safety checks passed
 - 仓库阶段：`v0.1` 方法与工具骨架；
 - 真实案件：仍在法院程序中，不进入本仓库；
 - 公开数据：只允许完全虚构的示例；
-- 已提供：Agent 架构说明、脱敏配置模板、法律法规来源链与数字化 Skill、五关口取证复盘与模板、协议总表、防止幻觉协议、“真实五问”提案、AEP 采用说明、项目初始化方法、四类 Schema、安全检查器和基础测试；
+- 已提供：Agent 架构说明、脱敏配置模板、法律法规来源链与数字化 Skill、五关口取证复盘、取证技术总览与模板、协议总表、防止幻觉协议、“真实五问”提案、AEP 采用说明、项目初始化方法、四类 Schema、安全检查器和基础测试；
 - 尚未提供：自动立案、自动提交、自动缴费、自动投诉和自动发布；
 - 后续重点：证据台账验证、来源登记、引用核验、版本比较和人工批准记录。
 
@@ -415,6 +419,10 @@ The public method note explains:
 
 Read [From Official Text to Citable Law](docs/legal-source-pipeline.md) and [Retrieving and Preserving Legal Sources with System Chrome](docs/codex-chrome-source-capture.md). Reusable files are available in the [Legal Source Archival and Digitization Skill](skills/legal-source-archive/SKILL.md), [source register template](examples/legal-sources/source-register.template.md), [download run template](examples/legal-sources/download-run.template.md), and [legal-use matrix template](examples/legal-sources/rule-use-matrix.template.md).
 
+## Evidence Collection Techniques and Principles
+
+Read [Technology, Methods, and Guiding Principles for Evidence Collection](docs/evidence-collection-techniques.md) for a matrix of the access and capture, integrity and custody, digitization and structure, and verification and legal-mapping technologies used in the project. It states the output, stop condition, and limit of proof for each layer.
+
 ## The Project Journey in One Minute
 
 For a first-person, de-identified account, start with [AI Helps Me Fight My Case: The Ultimate Private Counsel Is Online](docs/founder-story.md). It follows one ordinary person's twelve-month path from "which court should I go to?" to a verifiable AI-assisted self-litigation workflow.
@@ -439,6 +447,7 @@ The fuller anonymized account is in [docs/project-journey.md](docs/project-journ
 - [`docs/project-journey.md`](docs/project-journey.md): the anonymized bilingual project history and method review;
 - [`docs/legal-source-pipeline.md`](docs/legal-source-pipeline.md): official-source acquisition, preservation, PDF/DOCX/HTML digitization, version verification, and legal application;
 - [`docs/codex-chrome-source-capture.md`](docs/codex-chrome-source-capture.md): system-Chrome preflight, query contracts, download branches, final-URL checks, and file verification;
+- [`docs/evidence-collection-techniques.md`](docs/evidence-collection-techniques.md): the evidence-collection technology stack, twelve-step method, status model, stop conditions, and guiding principles;
 - [`docs/protocols/`](docs/protocols/README.md): the 13-entry registry, anti-hallucination protocol, proposed Truth Five protocol, AEP adoption note, and initialization guide;
 - [`docs/`](docs/): workflow, evidence, source verification, and threat model;
 - [`schemas/`](schemas/): data contracts for evidence, facts, legal sources, and human approval;
@@ -470,7 +479,7 @@ PASS: public-safety checks passed
 - Real case: still in court proceedings and not included here;
 - Public data: entirely synthetic examples only;
 - Not available: automated filing, submission, payment, complaints, or publishing;
-- Available now: an Agent architecture guide, de-identified configuration templates, a legal-source acquisition and digitization workflow and skill, a protocol registry, an anti-hallucination protocol, a proposed Truth Five protocol, an AEP adoption note, an initialization guide, four schemas, a public-safety checker, and basic tests;
+- Available now: an Agent architecture guide, de-identified configuration templates, a legal-source acquisition and digitization workflow and skill, an evidence-collection technology overview and templates, a protocol registry, an anti-hallucination protocol, a proposed Truth Five protocol, an AEP adoption note, an initialization guide, four schemas, a public-safety checker, and basic tests;
 - Next focus: evidence-index validation, source registry, citation verification, version comparison, and approval records.
 
 ## Privacy and Security

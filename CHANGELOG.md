@@ -7,6 +7,7 @@
 ### Added
 
 - A bilingual five-gate evidence-collection retrospective covering proposed evidence lists, user-managed sign-in, read-only browser assistance, original preservation, hashes, Markdown/OCR/transcript derivatives, source conflicts, and legal-elements review;
+- A bilingual evidence-collection technology overview covering four technical layers, the twelve-step operating method, evidence statuses, mandatory stop conditions, and guiding principles;
 - Evidence collection plan, run record, and legal-elements matrix templates with explicit read-only authorization, stop conditions, and limits of proof;
 - Enforced public aliases `F猪` and `T宝` for the platforms involved in the underlying matter while keeping statute and regulation names in full;
 - A bilingual legal-source pipeline covering official-source discovery, download, preservation, PDF/DOCX/HTML digitization, version verification, and use in legal analysis;

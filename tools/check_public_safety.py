@@ -32,6 +32,7 @@ REQUIRED_PATHS = (
     "docs/legal-source-pipeline.md",
     "docs/codex-chrome-source-capture.md",
     "docs/evidence-collection-playbook.md",
+    "docs/evidence-collection-techniques.md",
     "docs/founder-story.md",
     "docs/project-journey.md",
     "docs/protocols/README.md",
@@ -63,6 +64,7 @@ REQUIRED_PATHS = (
     "tests/test_agent_architecture.py",
     "tests/test_legal_source_pipeline.py",
     "tests/test_evidence_collection_playbook.py",
+    "tests/test_evidence_collection_techniques.py",
 )
 
 SKIPPED_DIR_NAMES = {
