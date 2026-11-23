@@ -6,6 +6,8 @@
 
 ### Added
 
+- A bilingual five-gate evidence-collection retrospective covering proposed evidence lists, user-managed sign-in, read-only browser assistance, original preservation, hashes, Markdown/OCR/transcript derivatives, source conflicts, and legal-elements review;
+- Evidence collection plan, run record, and legal-elements matrix templates with explicit read-only authorization, stop conditions, and limits of proof;
 - Enforced public aliases `F猪` and `T宝` for the platforms involved in the underlying matter while keeping statute and regulation names in full;
 - A bilingual legal-source pipeline covering official-source discovery, download, preservation, PDF/DOCX/HTML digitization, version verification, and use in legal analysis;
 - A bilingual system-Chrome source-capture guide documenting the evolution from the historical mixed-channel download work to the self-developed `codex-chrome-ops` operating contract, including its preflight and reference playbooks, query scope, download branches, final-URL checks, file hashes, recovery, and channel-honesty rules;

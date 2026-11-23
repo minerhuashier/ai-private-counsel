@@ -135,6 +135,20 @@ flowchart LR
 
 阅读 [《从官方文本到可引用法律》](docs/legal-source-pipeline.md) 和 [《用系统 Chrome 检索、下载与固定法律法规》](docs/codex-chrome-source-capture.md)，可直接使用 [法律法规来源存档与数字化 Skill](skills/legal-source-archive/SKILL.md)、[来源登记模板](examples/legal-sources/source-register.template.md)、[下载运行记录模板](examples/legal-sources/download-run.template.md) 和 [法律适用矩阵模板](examples/legal-sources/rule-use-matrix.template.md)。
 
+## 证据不是“抓到就算”，而是五层可核验记录
+
+项目最早使用应用内浏览器取证：用户本人保持账号登录、指定页面和起点，AI 只在明确范围内逐页读取、截图、提取和整理。聊天记录最终形成 31 页连续截图、105 条带时间消息、完整 Markdown、分页索引、时间线和逐文件 SHA-256；客服截图经过 OCR 后逐张视觉复核；通话录音采用本地离线转写并保留时间戳与不确定标记。这不是后来才形成的系统 Chrome 流程，也不能被追溯改写成系统 Chrome 流程。
+
+公开复盘把一次取证拆成五个关口：
+
+1. 根据用户叙述生成待证事实和建议证据清单，不先写结论；
+2. 用户本人登录并划定只读范围，AI 不接触密码、验证码或 Cookie；
+3. 保存原件、截图、HTML 和页面数据，计算 SHA-256，并记录证明边界；
+4. 把材料数字化为可回链原件的 Markdown、OCR 和转写，保留识别误差与来源冲突；
+5. 回到官方法律文本和构成要件，反查事实、证据、冲突和缺口。
+
+阅读 [《从一段叙述到可核验证据链》](docs/evidence-collection-playbook.md)，可直接使用 [取证计划模板](examples/evidence/collection-plan.template.md)、[取证运行记录模板](examples/evidence/collection-run.template.md) 和 [法律要件与证据矩阵模板](examples/evidence/legal-evidence-matrix.template.md)。模板只接受占位符或完全虚构内容，真实截图、录音、聊天和案件材料留在私有工作区。
+
 ## 一分钟看懂项目历程
 
 如果你更想先读故事，可以从第一人称、去标识化的 [《AI 帮我打官司，最强私人律师上线》](docs/founder-story.md) 开始。它记录了一个普通人从“我该去哪个法院”到建立可核验 AI 自诉工作流的十二个月。
@@ -170,6 +184,7 @@ flowchart LR
 │   ├── citation-protocol.md
 │   ├── legal-source-pipeline.md
 │   ├── codex-chrome-source-capture.md
+│   ├── evidence-collection-playbook.md
 │   ├── threat-model.md
 │   └── protocols/
 │       ├── README.md
@@ -184,6 +199,7 @@ flowchart LR
 │   └── approval.schema.json
 ├── examples/
 │   ├── agent-config/
+│   ├── evidence/
 │   ├── legal-sources/
 │   └── synthetic/
 ├── skills/
@@ -198,9 +214,11 @@ flowchart LR
 - `docs/protocols/`：13 个协议条目的总表、防止幻觉、“真实五问”、AEP 采用说明和项目初始化方法；
 - `docs/legal-source-pipeline.md`：法律法规获取、原件存档、PDF/DOCX/HTML 数字化、版本核验和实际适用方法；
 - `docs/codex-chrome-source-capture.md`：`codex-chrome-ops` 预检、查询、下载、最终 URL、失败关闭和文件验证的技术细节；
+- `docs/evidence-collection-playbook.md`：从叙述生成证据清单、用户配合、页面固定、Markdown/OCR/转写和法律要件反查的五关口复盘；
 - `docs/`：工作流、证据、来源核验和风险模型；
 - `schemas/`：证据、事实、法律来源与人工批准的数据约定；
 - `examples/agent-config/`：脱敏的根指令、项目配置、七角色契约、状态、决策与工作日志模板；
+- `examples/evidence/`：取证计划、运行记录和法律要件与证据矩阵模板；
 - `examples/legal-sources/`：法律法规来源登记、下载运行记录和法律适用矩阵模板；
 - `skills/legal-source-archive/`：从项目实践提炼的法律法规下载、数字化与引用核验 Skill；
 - `examples/synthetic/`：完全虚构的演示数据；
@@ -227,7 +245,7 @@ PASS: public-safety checks passed
 - 仓库阶段：`v0.1` 方法与工具骨架；
 - 真实案件：仍在法院程序中，不进入本仓库；
 - 公开数据：只允许完全虚构的示例；
-- 已提供：Agent 架构说明、脱敏配置模板、法律法规来源链与数字化 Skill、协议总表、防止幻觉协议、“真实五问”提案、AEP 采用说明、项目初始化方法、四类 Schema、安全检查器和基础测试；
+- 已提供：Agent 架构说明、脱敏配置模板、法律法规来源链与数字化 Skill、五关口取证复盘与模板、协议总表、防止幻觉协议、“真实五问”提案、AEP 采用说明、项目初始化方法、四类 Schema、安全检查器和基础测试；
 - 尚未提供：自动立案、自动提交、自动缴费、自动投诉和自动发布；
 - 后续重点：证据台账验证、来源登记、引用核验、版本比较和人工批准记录。
 

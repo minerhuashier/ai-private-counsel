@@ -9,7 +9,7 @@ secrets/
 # Local case data and generated material
 private/
 case-data/
-evidence/
+/evidence/
 outputs/
 *.sqlite
 *.sqlite3
