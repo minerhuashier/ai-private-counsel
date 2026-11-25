@@ -7,7 +7,10 @@
 > **No source, no citation. No human approval, no action.**  
 > 无来源不引用，无本人确认不执行。
 
-`AI 自诉助手 / AI Private Counsel` 是一个从真实消费纠纷中生长出来的开源实验。  
+`AI 自诉助手 / AI Private Counsel` 是一个从真实消费纠纷中生长出来的开源实验。
+
+它更接近一套“个人诉讼流程与方法论”，而不是一个自动生成诉状的代码项目。
+
 本案仍在法院程序中，尚无最终结果。本仓库只公开方法、协议、Schema、工具和完全虚构的示例，不公开真实案件材料。
 
 ---
@@ -84,6 +87,7 @@ flowchart LR
 
 ## 它是什么
 
+- 一个把“我很迷茫”逐层校准为证据、法律关系、被告、管辖、诉请和文书的决策流程；
 - 一个“证据先于叙事”的个人维权工作流；
 - 一套要求 AI 在不确定时停止的公开协议；
 - 一组用于证据、事实、来源和人工批准的 JSON Schema；
@@ -151,6 +155,22 @@ flowchart LR
 
 如果只想先看技术总览，阅读 [《证据收集的技术、方法与指导原则》](docs/evidence-collection-techniques.md)。它把项目实际使用的访问抓取、完整性保管、数字化结构化、核验与法律映射技术列成矩阵，并逐项写明产出、停止条件和证明边界。
 
+## 证据之后，如何走到可提交的诉讼路径
+
+知道“打官司要有证据”只是起点。更难的是继续回答：这些证据支持哪一种法律关系？谁才是合同相对方？应当去哪个法院？每一项诉请能否回到事实、证据和有效法条？材料被退回后，应该改文字，还是改主体和路径？
+
+公开复盘把这部分工作拆成七道校准关口：
+
+1. **证据关口**：把叙述变成证据台账、时间线、证明范围与缺口；
+2. **法律事实关口**：区分客观事件、他人陈述、本人感受和法律主张；
+3. **法律关系关口**：从付款、履约、平台行为和平台协议反推请求权基础；
+4. **责任主体关口**：区分品牌、服务商、收款方、平台经营者和工商登记主体；
+5. **管辖权关口**：依据当时有效的官方程序规则比较被告住所地、合同履行地和专门管辖；
+6. **法律与文书关口**：先核验官方法条与构成要件，再建立“诉请—事实—证据—法律—计算”矩阵；
+7. **退回修正关口**：把立案审查退回视为路径校准信号，逐条解释原因并重做版本审计。
+
+阅读 [《从迷茫到可提交：AI 协助把维权诉求变成诉讼路径》](docs/decision-workflow.md) 与 [From Confusion to Filing: AI-Assisted Translation of a Claim into a Litigation Path](docs/decision-workflow.md)。项目级的取舍和失败关闭规则见 [《AI 私人律师项目的指导原则》](docs/guiding-principles.md) 与 [Guiding Principles for the AI Private Counsel Project](docs/guiding-principles.md)。可直接复用 [决策日志模板](examples/decision-path/decision-log.template.md)。
+
 ## 一分钟看懂项目历程
 
 如果你更想先读故事，可以从第一人称、去标识化的 [《AI 帮我打官司，最强私人律师上线》](docs/founder-story.md) 开始。它记录了一个普通人从“我该去哪个法院”到建立可核验 AI 自诉工作流的十二个月。
@@ -161,8 +181,8 @@ flowchart LR
 2. **替代与拒绝**：临近履行时对方改变方案，当事人拒绝替代方案并要求继续履约。
 3. **证据先于观点**：开始固定订单、聊天、录音、付款和平台处理记录。
 4. **AI 的第一次真正价值**：不是写诉状，而是转写、分类、提取时间线和发现证据缺口。
-5. **第一次路径失败**：初次立案思路未能通过审查，问题集中在法律关系、责任主体和材料结构，而不是“文案不够漂亮”。
-6. **从头重写**：重新核对合同关系、平台义务、请求金额、利息和证据目录，形成多个可审计版本。
+5. **第一次路径被退回**：立案审查指出法律关系、责任主体和材料结构问题；这是程序性校准，不是败诉。
+6. **从头重写**：重新核对合同关系、平台义务、被告、管辖、请求金额、利息和证据目录，形成多个可审计版本。
 7. **从调解进入诉讼**：经历补正、调解、退出调解和正式立案，案件继续推进。
 8. **程序状态变化**：举证、质证、程序转换、费用通知等节点不断更新，任何旧页面都可能过期。
 9. **人工负责**：所有签署、缴费、提交、期限处分和公开发布仍由当事人本人决定并执行。
@@ -188,6 +208,8 @@ flowchart LR
 │   ├── codex-chrome-source-capture.md
 │   ├── evidence-collection-playbook.md
 │   ├── evidence-collection-techniques.md
+│   ├── decision-workflow.md
+│   ├── guiding-principles.md
 │   ├── threat-model.md
 │   └── protocols/
 │       ├── README.md
@@ -202,6 +224,7 @@ flowchart LR
 │   └── approval.schema.json
 ├── examples/
 │   ├── agent-config/
+│   ├── decision-path/
 │   ├── evidence/
 │   ├── legal-sources/
 │   └── synthetic/
@@ -219,9 +242,12 @@ flowchart LR
 - `docs/codex-chrome-source-capture.md`：`codex-chrome-ops` 预检、查询、下载、最终 URL、失败关闭和文件验证的技术细节；
 - `docs/evidence-collection-playbook.md`：从叙述生成证据清单、用户配合、页面固定、Markdown/OCR/转写和法律要件反查的五关口复盘；
 - `docs/evidence-collection-techniques.md`：证据收集中使用的技术栈、十二步方法链、证据状态、停止条件和指导原则；
+- `docs/decision-workflow.md`：从模糊诉求到证据、法律关系、责任主体、管辖、法条、诉状和退回修正的七道校准关口；
+- `docs/guiding-principles.md`：证据、官方来源、失败关闭、人工责任、程序状态和公开传播的十六项项目原则；
 - `docs/`：工作流、证据、来源核验和风险模型；
 - `schemas/`：证据、事实、法律来源与人工批准的数据约定；
 - `examples/agent-config/`：脱敏的根指令、项目配置、七角色契约、状态、决策与工作日志模板；
+- `examples/decision-path/`：维权问题从事实到诉请、主体、管辖、文书与外部动作的决策日志模板；
 - `examples/evidence/`：取证计划、运行记录和法律要件与证据矩阵模板；
 - `examples/legal-sources/`：法律法规来源登记、下载运行记录和法律适用矩阵模板；
 - `skills/legal-source-archive/`：从项目实践提炼的法律法规下载、数字化与引用核验 Skill；
@@ -249,7 +275,7 @@ PASS: public-safety checks passed
 - 仓库阶段：`v0.1` 方法与工具骨架；
 - 真实案件：仍在法院程序中，不进入本仓库；
 - 公开数据：只允许完全虚构的示例；
-- 已提供：Agent 架构说明、脱敏配置模板、法律法规来源链与数字化 Skill、五关口取证复盘、取证技术总览与模板、协议总表、防止幻觉协议、“真实五问”提案、AEP 采用说明、项目初始化方法、四类 Schema、安全检查器和基础测试；
+- 已提供：Agent 架构说明、脱敏配置模板、法律法规来源链与数字化 Skill、五关口取证复盘、取证技术总览与模板、七道诉讼路径校准关口、项目指导原则、决策日志模板、协议总表、防止幻觉协议、“真实五问”提案、AEP 采用说明、项目初始化方法、四类 Schema、安全检查器和基础测试；
 - 尚未提供：自动立案、自动提交、自动缴费、自动投诉和自动发布；
 - 后续重点：证据台账验证、来源登记、引用核验、版本比较和人工批准记录。
 
@@ -294,7 +320,10 @@ PASS: public-safety checks passed
 >
 > **No source, no citation. No human approval, no action.**
 
-`AI Private Counsel` is an open-source experiment that grew out of a real consumer dispute.  
+`AI Private Counsel` is an open-source experiment that grew out of a real consumer dispute.
+
+It is closer to a personal litigation process and methodology repository than to a program that automatically generates a complaint.
+
 The underlying case is still proceeding through the courts and has no final outcome. This repository publishes only methods, protocols, schemas, tools, and entirely synthetic examples. It does not contain the real case file.
 
 ## Why This Project Exists
@@ -423,6 +452,22 @@ Read [From Official Text to Citable Law](docs/legal-source-pipeline.md) and [Ret
 
 Read [Technology, Methods, and Guiding Principles for Evidence Collection](docs/evidence-collection-techniques.md) for a matrix of the access and capture, integrity and custody, digitization and structure, and verification and legal-mapping technologies used in the project. It states the output, stop condition, and limit of proof for each layer.
 
+## From Evidence to a Filable Litigation Path
+
+Knowing that a case needs evidence is only the beginning. The harder questions are: which legal relationship does the evidence support, who is the contracting counterparty, which court has jurisdiction, can every claim be traced through fact, evidence, and effective law, and after a filing is returned, should the wording be changed or the party and path be rebuilt?
+
+The public retrospective divides that work into seven calibration gates:
+
+1. **Evidence**: convert narrative into an evidence index, timeline, proof boundaries, and gaps;
+2. **Legal facts**: separate observable events, statements, feelings, and legal arguments;
+3. **Legal relationship**: infer the basis of claim from payment, performance, platform conduct, and platform agreements;
+4. **Responsible party**: distinguish brands, service providers, payees, platform operators, and registered entities;
+5. **Jurisdiction**: compare defendant domicile, contract performance, and specialized jurisdiction using official rules effective at the relevant time;
+6. **Law and drafting**: verify official authorities and elements before building a claim-fact-evidence-law-calculation matrix;
+7. **Return and correction**: treat an intake return as a calibration signal and interpret every formal reason before rewriting.
+
+Read [From Confusion to Filing: AI-Assisted Translation of a Claim into a Litigation Path](docs/decision-workflow.md) and [Guiding Principles for the AI Private Counsel Project](docs/guiding-principles.md). The reusable [decision-log template](examples/decision-path/decision-log.template.md) records facts, candidate relationships, parties, jurisdiction, claims, versions, human decisions, and external acts.
+
 ## The Project Journey in One Minute
 
 For a first-person, de-identified account, start with [AI Helps Me Fight My Case: The Ultimate Private Counsel Is Online](docs/founder-story.md). It follows one ordinary person's twelve-month path from "which court should I go to?" to a verifiable AI-assisted self-litigation workflow.
@@ -433,8 +478,8 @@ The fuller anonymized account is in [docs/project-journey.md](docs/project-journ
 2. **Substitution and refusal**: close to performance, the provider changed the arrangement; the user rejected the substitute and asked for performance.
 3. **Evidence before narrative**: the order, chats, recording, payment, and platform-handling records were preserved.
 4. **AI's first real value**: not drafting a complaint, but transcribing, classifying, building a timeline, and exposing evidence gaps.
-5. **The first path failed**: the initial filing theory did not pass review. The problem was the legal relationship, responsible parties, and material structure, not "insufficiently polished wording."
-6. **A full rewrite**: the contractual relationship, platform duties, requested amounts, interest, and evidence index were rebuilt into auditable versions.
+5. **The first filing was returned**: intake review identified problems in the legal relationship, responsible parties, and material structure. This was procedural calibration, not a loss.
+6. **A full rewrite**: the contractual relationship, platform duties, defendant, jurisdiction, requested amounts, interest, and evidence index were rebuilt into auditable versions.
 7. **From mediation to litigation**: correction, mediation, withdrawal from mediation, and formal case acceptance followed.
 8. **Procedural change**: evidence, cross-examination, procedure type, fee notices, and other statuses kept changing; old pages could become obsolete.
 9. **Human responsibility**: every signature, payment, filing, deadline decision, and public statement remained a human decision and action.
@@ -448,10 +493,13 @@ The fuller anonymized account is in [docs/project-journey.md](docs/project-journ
 - [`docs/legal-source-pipeline.md`](docs/legal-source-pipeline.md): official-source acquisition, preservation, PDF/DOCX/HTML digitization, version verification, and legal application;
 - [`docs/codex-chrome-source-capture.md`](docs/codex-chrome-source-capture.md): system-Chrome preflight, query contracts, download branches, final-URL checks, and file verification;
 - [`docs/evidence-collection-techniques.md`](docs/evidence-collection-techniques.md): the evidence-collection technology stack, twelve-step method, status model, stop conditions, and guiding principles;
+- [`docs/decision-workflow.md`](docs/decision-workflow.md): seven calibration gates from a vague claim through evidence, legal relationship, responsible party, jurisdiction, law, drafting, and correction;
+- [`docs/guiding-principles.md`](docs/guiding-principles.md): sixteen project principles covering evidence, official sources, fail-closed behavior, human responsibility, procedural state, and public communication;
 - [`docs/protocols/`](docs/protocols/README.md): the 13-entry registry, anti-hallucination protocol, proposed Truth Five protocol, AEP adoption note, and initialization guide;
 - [`docs/`](docs/): workflow, evidence, source verification, and threat model;
 - [`schemas/`](schemas/): data contracts for evidence, facts, legal sources, and human approval;
 - [`examples/agent-config/`](examples/agent-config/README.md): de-identified root instructions, project configuration, seven role contracts, and state/decision/worklog templates;
+- [`examples/decision-path/`](examples/decision-path/README.md): a decision log for moving from facts to claims, parties, jurisdiction, documents, and external acts;
 - [`examples/legal-sources/`](examples/legal-sources/): source-register, download-run, and legal-use matrix templates;
 - [`skills/legal-source-archive/`](skills/legal-source-archive/SKILL.md): a reusable source-acquisition, digitization, and citation-verification skill;
 - [`examples/synthetic/`](examples/synthetic/): entirely fictional demonstration data;
@@ -479,7 +527,7 @@ PASS: public-safety checks passed
 - Real case: still in court proceedings and not included here;
 - Public data: entirely synthetic examples only;
 - Not available: automated filing, submission, payment, complaints, or publishing;
-- Available now: an Agent architecture guide, de-identified configuration templates, a legal-source acquisition and digitization workflow and skill, an evidence-collection technology overview and templates, a protocol registry, an anti-hallucination protocol, a proposed Truth Five protocol, an AEP adoption note, an initialization guide, four schemas, a public-safety checker, and basic tests;
+- Available now: an Agent architecture guide, de-identified configuration templates, a legal-source acquisition and digitization workflow and skill, an evidence-collection technology overview and templates, seven litigation-path calibration gates, project guiding principles, a decision-log template, a protocol registry, an anti-hallucination protocol, a proposed Truth Five protocol, an AEP adoption note, an initialization guide, four schemas, a public-safety checker, and basic tests;
 - Next focus: evidence-index validation, source registry, citation verification, version comparison, and approval records.
 
 ## Privacy and Security

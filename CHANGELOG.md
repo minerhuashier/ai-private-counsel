@@ -6,6 +6,9 @@
 
 ### Added
 
+- A bilingual seven-gate decision workflow connecting a vague claim to evidence, legal facts, legal relationship, responsible party, jurisdiction, official legal authority, drafting, filing correction, and human decision records;
+- A bilingual sixteen-principle operating standard covering evidence-first analysis, official-source verification, counterargument review, fail-closed behavior, human responsibility, procedural-state integrity, and public-communication limits;
+- A bilingual decision-log template for recording candidate facts, relationships, parties, jurisdiction, claims, document versions, filing returns, approvals, and external acts;
 - A bilingual five-gate evidence-collection retrospective covering proposed evidence lists, user-managed sign-in, read-only browser assistance, original preservation, hashes, Markdown/OCR/transcript derivatives, source conflicts, and legal-elements review;
 - A bilingual evidence-collection technology overview covering four technical layers, the twelve-step operating method, evidence statuses, mandatory stop conditions, and guiding principles;
 - Evidence collection plan, run record, and legal-elements matrix templates with explicit read-only authorization, stop conditions, and limits of proof;

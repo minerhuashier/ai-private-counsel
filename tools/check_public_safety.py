@@ -33,6 +33,8 @@ REQUIRED_PATHS = (
     "docs/codex-chrome-source-capture.md",
     "docs/evidence-collection-playbook.md",
     "docs/evidence-collection-techniques.md",
+    "docs/decision-workflow.md",
+    "docs/guiding-principles.md",
     "docs/founder-story.md",
     "docs/project-journey.md",
     "docs/protocols/README.md",
@@ -48,6 +50,8 @@ REQUIRED_PATHS = (
     "examples/agent-config/STATUS.template.md",
     "examples/agent-config/decisions.template.md",
     "examples/agent-config/worklog.template.md",
+    "examples/decision-path/README.md",
+    "examples/decision-path/decision-log.template.md",
     "examples/legal-sources/source-register.template.md",
     "examples/legal-sources/download-run.template.md",
     "examples/legal-sources/rule-use-matrix.template.md",
@@ -65,6 +69,7 @@ REQUIRED_PATHS = (
     "tests/test_legal_source_pipeline.py",
     "tests/test_evidence_collection_playbook.py",
     "tests/test_evidence_collection_techniques.py",
+    "tests/test_decision_workflow.py",
 )
 
 SKIPPED_DIR_NAMES = {

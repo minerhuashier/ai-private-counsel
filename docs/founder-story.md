@@ -92,7 +92,7 @@ AI 没有直接给我一个可以照抄的答案。它先追问了几个我当�
 
 这两件事看起来相似，实际完全不同。
 
-### 五、第一次提交失败，反而救了我
+### 五、第一次提交被退回，反而救了我
 
 第一次提交材料时，我以为最大的困难已经过去了。
 
@@ -113,6 +113,8 @@ AI 没有直接给我一个可以照抄的答案。它先追问了几个我当�
 AI 在这个过程中继续帮我对照版本、列出矛盾、查找来源，但最后的选择必须由我自己作。
 
 我删过请求，换过被告，也重写了不只一版材料。最开始觉得“少写一项就是吃亏”，后来才明白，写下一项自己无法证明的请求，才是真正的风险。
+
+后来，我把这套从证据、法律关系、被告、管辖到诉状和退回修正的过程整理成 [《从迷茫到可提交：AI 协助把维权诉求变成诉讼路径》](decision-workflow.md)。它记录的不是“AI 自动打官司”，而是一个普通人怎样在 AI 的辅助下，把每一步做得更符合可核验和可负责的要求。
 
 ### 六、从“写一份文书”到维护一套状态
 
@@ -313,7 +315,7 @@ At first, I was telling a story. Later, I was maintaining a network of evidence 
 
 The two may look similar, but they are fundamentally different.
 
-### 5. My First Failed Filing May Have Saved Me
+### 5. My First Filing Return May Have Saved Me
 
 When I submitted the materials for the first time, I thought the hardest part was over.
 
@@ -334,6 +336,8 @@ The return forced me to redo three things:
 AI continued to help me compare versions, identify contradictions, and find sources, but the final choices had to be mine.
 
 I removed requests, changed the defendant, and rewrote the materials more than once. At first, I thought omitting a request meant giving something up. Later, I understood that the greater risk was to include a request I could not prove.
+
+I later organized this path from evidence, legal relationship, defendant, jurisdiction, and drafting through filing correction into [From Confusion to Filing: AI-Assisted Translation of a Claim into a Litigation Path](decision-workflow.md). It is not a story about AI automatically litigating a case. It records how an ordinary person used AI to make each step more verifiable and more clearly owned by a human.
 
 ### 6. From "Writing a Document" to Maintaining a State
 
