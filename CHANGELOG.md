@@ -6,6 +6,8 @@
 
 ### Added
 
+- A bilingual post-filing procedural-state playbook covering eight state axes, source layering, fee reconciliation, deadline preservation, asynchronous online hearing preparation, cross-examination status, conflict handling, and human action gates;
+- A procedural-state register template for separating event time, source time, capture time, proven scope, unresolved conflicts, external-action receipts, and explicit human approval;
 - A bilingual seven-gate decision workflow connecting a vague claim to evidence, legal facts, legal relationship, responsible party, jurisdiction, official legal authority, drafting, filing correction, and human decision records;
 - A bilingual sixteen-principle operating standard covering evidence-first analysis, official-source verification, counterargument review, fail-closed behavior, human responsibility, procedural-state integrity, and public-communication limits;
 - A bilingual decision-log template for recording candidate facts, relationships, parties, jurisdiction, claims, document versions, filing returns, approvals, and external acts;

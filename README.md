@@ -171,6 +171,20 @@ flowchart LR
 
 阅读 [《从迷茫到可提交：AI 协助把维权诉求变成诉讼路径》](docs/decision-workflow.md) 与 [From Confusion to Filing: AI-Assisted Translation of a Claim into a Litigation Path](docs/decision-workflow.md)。项目级的取舍和失败关闭规则见 [《AI 私人律师项目的指导原则》](docs/guiding-principles.md) 与 [Guiding Principles for the AI Private Counsel Project](docs/guiding-principles.md)。可直接复用 [决策日志模板](examples/decision-path/decision-log.template.md)。
 
+## 立案之后，程序状态也必须被证明
+
+把案件送进法院，不代表此后只剩“等待结果”。程序类型、费用、送达、期限、证据、审理方式和正式文书可能分别更新，页面、短信、银行回单和正式文书也可能处在不同步状态。
+
+公开指南把立案后的工作拆成八条状态轴，并规定每条记录必须同时保存事件时间、来源时间、抓取时间、原始载体、证明范围、不能证明的事项和下一步核实来源。它特别区分：
+
+- 银行扣款成功与法院内部入账完成；
+- 收到新程序通知与旧期限已被正式调整；
+- 异步审理窗口与某一阶段的提交截止时间；
+- 系统接收证据与法院已经采信；
+- AI 生成待审草稿与本人批准并执行外部动作。
+
+阅读 [《立案之后：用 AI 维护程序状态与准备线上异步审理》](docs/procedural-state-playbook.md)。可直接复用 [程序状态登记模板](examples/procedural-state/state-register.template.md)，按来源和时间维护案件身份、程序类型、费用、送达、期限、证据、审理、文书与批准。
+
 ## 一分钟看懂项目历程
 
 如果你更想先读故事，可以从第一人称、去标识化的 [《AI 帮我打官司，最强私人律师上线》](docs/founder-story.md) 开始。它记录了一个普通人从“我该去哪个法院”到建立可核验 AI 自诉工作流的十二个月。
@@ -209,6 +223,7 @@ flowchart LR
 │   ├── evidence-collection-playbook.md
 │   ├── evidence-collection-techniques.md
 │   ├── decision-workflow.md
+│   ├── procedural-state-playbook.md
 │   ├── guiding-principles.md
 │   ├── threat-model.md
 │   └── protocols/
@@ -227,6 +242,7 @@ flowchart LR
 │   ├── decision-path/
 │   ├── evidence/
 │   ├── legal-sources/
+│   ├── procedural-state/
 │   └── synthetic/
 ├── skills/
 │   └── legal-source-archive/
@@ -243,6 +259,7 @@ flowchart LR
 - `docs/evidence-collection-playbook.md`：从叙述生成证据清单、用户配合、页面固定、Markdown/OCR/转写和法律要件反查的五关口复盘；
 - `docs/evidence-collection-techniques.md`：证据收集中使用的技术栈、十二步方法链、证据状态、停止条件和指导原则；
 - `docs/decision-workflow.md`：从模糊诉求到证据、法律关系、责任主体、管辖、法条、诉状和退回修正的七道校准关口；
+- `docs/procedural-state-playbook.md`：立案后的八条程序状态轴、来源冲突、费用、期限、质证和线上异步审理准备方法；
 - `docs/guiding-principles.md`：证据、官方来源、失败关闭、人工责任、程序状态和公开传播的十六项项目原则；
 - `docs/`：工作流、证据、来源核验和风险模型；
 - `schemas/`：证据、事实、法律来源与人工批准的数据约定；
@@ -250,6 +267,7 @@ flowchart LR
 - `examples/decision-path/`：维权问题从事实到诉请、主体、管辖、文书与外部动作的决策日志模板；
 - `examples/evidence/`：取证计划、运行记录和法律要件与证据矩阵模板；
 - `examples/legal-sources/`：法律法规来源登记、下载运行记录和法律适用矩阵模板；
+- `examples/procedural-state/`：按八条状态轴记录来源、时间、冲突、外部动作回执和人工批准的程序状态模板；
 - `skills/legal-source-archive/`：从项目实践提炼的法律法规下载、数字化与引用核验 Skill；
 - `examples/synthetic/`：完全虚构的演示数据；
 - `tools/check_public_safety.py`：公开仓库敏感文件与模式检查；
@@ -275,9 +293,9 @@ PASS: public-safety checks passed
 - 仓库阶段：`v0.1` 方法与工具骨架；
 - 真实案件：仍在法院程序中，不进入本仓库；
 - 公开数据：只允许完全虚构的示例；
-- 已提供：Agent 架构说明、脱敏配置模板、法律法规来源链与数字化 Skill、五关口取证复盘、取证技术总览与模板、七道诉讼路径校准关口、项目指导原则、决策日志模板、协议总表、防止幻觉协议、“真实五问”提案、AEP 采用说明、项目初始化方法、四类 Schema、安全检查器和基础测试；
+- 已提供：Agent 架构说明、脱敏配置模板、法律法规来源链与数字化 Skill、五关口取证复盘、取证技术总览与模板、七道诉讼路径校准关口、立案后程序状态与线上异步审理指南、项目指导原则、决策日志与程序状态模板、协议总表、防止幻觉协议、“真实五问”提案、AEP 采用说明、项目初始化方法、四类 Schema、安全检查器和基础测试；
 - 尚未提供：自动立案、自动提交、自动缴费、自动投诉和自动发布；
-- 后续重点：证据台账验证、来源登记、引用核验、版本比较和人工批准记录。
+- 后续重点：证据台账验证、来源登记、引用核验、版本比较、程序状态冲突检测和人工批准记录。
 
 ## 隐私与安全
 
@@ -468,6 +486,20 @@ The public retrospective divides that work into seven calibration gates:
 
 Read [From Confusion to Filing: AI-Assisted Translation of a Claim into a Litigation Path](docs/decision-workflow.md) and [Guiding Principles for the AI Private Counsel Project](docs/guiding-principles.md). The reusable [decision-log template](examples/decision-path/decision-log.template.md) records facts, candidate relationships, parties, jurisdiction, claims, versions, human decisions, and external acts.
 
+## After Filing, Procedural State Must Also Be Proven
+
+Getting a case into court does not mean the only remaining task is to "wait for the outcome." Procedure type, fees, service, deadlines, evidence, hearing mode, and formal documents may update separately. A page, message, bank receipt, and formal document may also be out of sync.
+
+The public guide divides post-filing work into eight state axes. Every record preserves event time, source time, capture time, original medium, proven scope, limits of proof, and the next verification source. It explicitly distinguishes:
+
+- a successful bank debit from completed court-side reconciliation;
+- receipt of a new procedural notice from formal adjustment of an older deadline;
+- an asynchronous hearing window from an item-specific submission deadline;
+- system receipt of evidence from judicial acceptance on the merits;
+- an AI review draft from a human-approved external act.
+
+Read [After Filing: Using AI to Maintain Procedural State and Prepare for Asynchronous Online Proceedings](docs/procedural-state-playbook.md). Start with the [procedural-state register template](examples/procedural-state/state-register.template.md) to track case identity, procedure type, fees, service, deadlines, evidence, hearing, and documents/approval by source and time.
+
 ## The Project Journey in One Minute
 
 For a first-person, de-identified account, start with [AI Helps Me Fight My Case: The Ultimate Private Counsel Is Online](docs/founder-story.md). It follows one ordinary person's twelve-month path from "which court should I go to?" to a verifiable AI-assisted self-litigation workflow.
@@ -494,6 +526,7 @@ The fuller anonymized account is in [docs/project-journey.md](docs/project-journ
 - [`docs/codex-chrome-source-capture.md`](docs/codex-chrome-source-capture.md): system-Chrome preflight, query contracts, download branches, final-URL checks, and file verification;
 - [`docs/evidence-collection-techniques.md`](docs/evidence-collection-techniques.md): the evidence-collection technology stack, twelve-step method, status model, stop conditions, and guiding principles;
 - [`docs/decision-workflow.md`](docs/decision-workflow.md): seven calibration gates from a vague claim through evidence, legal relationship, responsible party, jurisdiction, law, drafting, and correction;
+- [`docs/procedural-state-playbook.md`](docs/procedural-state-playbook.md): eight post-filing state axes, source conflicts, fees, deadlines, cross-examination, and asynchronous online hearing preparation;
 - [`docs/guiding-principles.md`](docs/guiding-principles.md): sixteen project principles covering evidence, official sources, fail-closed behavior, human responsibility, procedural state, and public communication;
 - [`docs/protocols/`](docs/protocols/README.md): the 13-entry registry, anti-hallucination protocol, proposed Truth Five protocol, AEP adoption note, and initialization guide;
 - [`docs/`](docs/): workflow, evidence, source verification, and threat model;
@@ -501,6 +534,7 @@ The fuller anonymized account is in [docs/project-journey.md](docs/project-journ
 - [`examples/agent-config/`](examples/agent-config/README.md): de-identified root instructions, project configuration, seven role contracts, and state/decision/worklog templates;
 - [`examples/decision-path/`](examples/decision-path/README.md): a decision log for moving from facts to claims, parties, jurisdiction, documents, and external acts;
 - [`examples/legal-sources/`](examples/legal-sources/): source-register, download-run, and legal-use matrix templates;
+- [`examples/procedural-state/`](examples/procedural-state/README.md): a register for sources, time, conflicts, external-action receipts, and human approval across eight procedural state axes;
 - [`skills/legal-source-archive/`](skills/legal-source-archive/SKILL.md): a reusable source-acquisition, digitization, and citation-verification skill;
 - [`examples/synthetic/`](examples/synthetic/): entirely fictional demonstration data;
 - [`tools/check_public_safety.py`](tools/check_public_safety.py): checks for sensitive files and patterns;

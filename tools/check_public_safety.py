@@ -34,6 +34,7 @@ REQUIRED_PATHS = (
     "docs/evidence-collection-playbook.md",
     "docs/evidence-collection-techniques.md",
     "docs/decision-workflow.md",
+    "docs/procedural-state-playbook.md",
     "docs/guiding-principles.md",
     "docs/founder-story.md",
     "docs/project-journey.md",
@@ -52,6 +53,8 @@ REQUIRED_PATHS = (
     "examples/agent-config/worklog.template.md",
     "examples/decision-path/README.md",
     "examples/decision-path/decision-log.template.md",
+    "examples/procedural-state/README.md",
+    "examples/procedural-state/state-register.template.md",
     "examples/legal-sources/source-register.template.md",
     "examples/legal-sources/download-run.template.md",
     "examples/legal-sources/rule-use-matrix.template.md",
@@ -70,6 +73,7 @@ REQUIRED_PATHS = (
     "tests/test_evidence_collection_playbook.py",
     "tests/test_evidence_collection_techniques.py",
     "tests/test_decision_workflow.py",
+    "tests/test_procedural_state_playbook.py",
 )
 
 SKIPPED_DIR_NAMES = {
